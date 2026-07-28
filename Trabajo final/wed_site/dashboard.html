@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Choco Turismo</title>
+    <link rel="icon" type="image/png" href="/favicon/favicon.png">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { background: var(--cream); padding-top: 0; }
+        .dashboard-page { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+        .dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
+        .dash-header h1 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--dark); }
+        .dash-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 32px; }
+        .stat-card { background: white; padding: 24px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.06); display: flex; align-items: center; gap: 16px; }
+        .stat-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+        .stat-icon.green { background: rgba(45,138,94,0.12); color: var(--green-medium); }
+        .stat-icon.blue { background: rgba(56,178,206,0.12); color: var(--blue-light); }
+        .stat-icon.orange { background: rgba(234,179,8,0.12); color: #ca8a04; }
+        .stat-icon.purple { background: rgba(168,85,247,0.12); color: #9333ea; }
+        .stat-card h3 { font-size: 1.8rem; font-weight: 700; color: var(--dark); margin: 0; }
+        .stat-card p { font-size: 0.85rem; color: var(--gray-500); margin: 0; }
+        .dash-section { background: white; padding: 24px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.06); margin-bottom: 24px; }
+        .dash-section h2 { font-size: 1.1rem; color: var(--dark); margin-bottom: 16px; font-family: 'Playfair Display', serif; }
+        .dash-section h2 i { color: var(--green-medium); margin-right: 8px; }
+        .destino-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--gray-200); }
+        .destino-row:last-child { border-bottom: none; }
+        .destino-row .name { font-weight: 500; color: var(--dark); }
+        .destino-row .meta { font-size: 0.85rem; color: var(--gray-500); display: flex; gap: 12px; align-items: center; }
+        .loading { text-align: center; padding: 40px; color: var(--gray-500); }
+        @media (max-width: 768px) { .dash-header { flex-direction: column; gap: 16px; text-align: center; } }
+    </style>
+</head>
+<body>
+    <div class="dashboard-page">
+        <div class="dash-header">
+            <h1><i class="fas fa-chart-pie"></i> Dashboard</h1>
+            <a href="/home" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+        </div>
+
+        <div class="dash-stats" id="dashStats">
+            <div class="stat-card"><div class="stat-icon green"><i class="fas fa-map-marked-alt"></i></div><div><h3 id="statDestinos">0</h3><p>Destinos</p></div></div>
+            <div class="stat-card"><div class="stat-icon blue"><i class="fas fa-users"></i></div><div><h3 id="statUsuarios">0</h3><p>Usuarios</p></div></div>
+            <div class="stat-card"><div class="stat-icon orange"><i class="fas fa-city"></i></div><div><h3 id="statMunicipios">0</h3><p>Municipios</p></div></div>
+            <div class="stat-card"><div class="stat-icon purple"><i class="fas fa-tag"></i></div><div><h3 id="statCategorias">0</h3><p>Categorias</p></div></div>
+        </div>
+
+        <div class="dash-section">
+            <h2><i class="fas fa-clock"></i> Ultimos Destinos</h2>
+            <div id="recentDestinos"><p class="loading">Cargando...</p></div>
+        </div>
+    </div>
+
+    <script>
+        const API = 'http://localhost:5000/api';
+
+        async function loadDashboard() {
+            try {
+                const res = await fetch(API + '/destinos', { credentials: 'include' });
+                if (!res.ok) { window.location.href = '/'; return; }
+                const dests = await res.json();
+                const res2 = await fetch(API + '/usuarios', { credentials: 'include' });
+                const users = res2.ok ? await res2.json() : [];
+
+                const munSet = {}, catSet = {};
+                for (const d of dests) {
+                    if (d.municipio) munSet[d.municipio] = 1;
+                    if (d.categoria) catSet[d.categoria] = 1;
+                }
+
+                document.getElementById('statDestinos').textContent = dests.length;
+                document.getElementById('statUsuarios').textContent = users.length;
+                document.getElementById('statMunicipios').textContent = Object.keys(munSet).length;
+                document.getElementById('statCategorias').textContent = Object.keys(catSet).length;
+
+                const recent = dests.slice(0, 5);
+                const html = recent.map(d =>
+                    '<div class="destino-row"><span class="name">' + escapeHtml(d.nombre) + '</span>' +
+                    '<span class="meta"><span>' + escapeHtml(d.municipio) + '</span><span class="badge">' + escapeHtml(d.categoria) + '</span></span></div>'
+                ).join('');
+                document.getElementById('recentDestinos').innerHTML = html || '<p class="loading">No hay destinos</p>';
+            } catch(e) {
+                document.getElementById('recentDestinos').innerHTML = '<p class="loading">Error al cargar</p>';
+            }
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+        }
+
+        loadDashboard();
+    </script>
+</body>
+</html>
