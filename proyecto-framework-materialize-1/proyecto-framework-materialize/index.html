@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Caña de Azúcar | Cultivo y Tradición</title>
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Iconos Material -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- CSS personalizado (archivo separado) -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="favicon/favicon-32x32.png" type="image/x-icon">
+</head>
+<body>
+
+   <!-- NAVBAR -->
+<div class="navbar-fixed">
+    <nav class="green darken-3">
+        <div class="nav-wrapper container">
+
+            <a href="#" class="brand-logo"><strong>La Caña</strong></a>
+
+            <!-- Botón hamburguesa -->
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger right">
+                <i class="material-icons">menu</i>
+            </a>
+
+            <!-- Menú escritorio -->
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#historia">Historia</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+
+        </div>
+    </nav>
+</div>
+
+<!-- MENÚ MÓVIL (SIDENAV) -->
+<ul class="sidenav" id="mobile-demo">
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#historia">Historia</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+</ul>
+
+    <!-- SECCIÓN INICIO / INTRODUCCIÓN -->
+    <div class="introduccion" id="inicio">
+        <h1 class="center-align green-text text-darken-3"><strong>La Caña de Azúcar</strong></h1>
+            <h2 class="center-align green-text text-darken-3"> <strong>Introducción</strong></h2>
+            <p class="flow-text center-align">La caña de azúcar es una planta tropical ampliamente cultivada en diferentes partes del mundo por su gran importancia económica y alimenticia. Se caracteriza por sus tallos largos y dulces, de los cuales se extrae el azúcar utilizado en numerosos productos y alimentos. Además de la producción de azúcar, la caña también se utiliza para elaborar panela, melaza, alcohol y biocombustibles. Gracias a su capacidad de crecer en climas cálidos y húmedos, este cultivo se ha convertido en una de las principales actividades agrícolas de muchos países tropicales, generando empleo y contribuyendo al desarrollo industrial y comercial.</p>
+        </div>
+    </div>
+
+    <!-- SECCIÓN HISTORIA -->
+    <div class="historia" id="historia" >
+        <h2 class="center-align green-text text-darken-3"> <strong>Historia de la Caña de Azúcar</strong></h2>
+        <p class="flow-text">La caña de azúcar es una planta tropical originaria del sudeste asiático, especialmente de India y Papúa Nueva Guinea, donde desde hace miles de años las personas descubrieron que su jugo era dulce y podía utilizarse para producir azúcar. Con el tiempo, su cultivo se expandió hacia China, el Medio Oriente y Europa gracias al comercio y a los pueblos árabes. Durante la colonización, los europeos llevaron la caña de azúcar a América, donde encontró condiciones ideales para crecer en regiones tropicales como Brasil, Cuba y República Dominicana. Desde entonces, la caña se convirtió en uno de los cultivos más importantes del mundo debido a la producción de azúcar, panela, alcohol y biocombustibles, siendo actualmente una fuente importante de economía y empleo en muchos países tropicales.</p>
+    </div>
+
+    <!-- SECCIÓN CARRUSEL DE IMÁGENES -->
+     <section id="galeria" class="section">
+        <div class="container">
+            <h2 class="center-align green-text text-darken-3"><strong>Galería</strong></h2>
+            <div class="carousel">
+                <a class="carousel-item" href="#one!">
+                    <img src="https://picsum.photos/id/15/500/400" alt="Campo de caña">
+                </a>
+                <a class="carousel-item" href="#two!">
+                    <img src="https://picsum.photos/id/24/500/400" alt="Tallos de caña">
+                </a>
+                <a class="carousel-item" href="#three!">
+                    <img src="https://picsum.photos/id/29/500/400" alt="Cosecha de caña">
+                </a>
+                <a class="carousel-item" href="#four!">
+                    <img src="https://picsum.photos/id/104/500/400" alt="Producción de azúcar">
+                </a>
+                <a class="carousel-item" href="#five!">
+                    <img src="https://picsum.photos/id/30/500/400" alt="Plantación tropical">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN CONTACTO -->
+        <div class="contacto" id="contacto">
+            <h2 class="center-align green-text text-darken-3">Contacto</h2>
+
+            <div class="row">
+                <div class="col s12 m6 offset-m3">
+                    <div class="card-panel white center-align">
+                        <p><i class="material-icons green-text">phone</i> +57 300 123 4567</p>
+                        <p><i class="material-icons green-text">email</i> info@lacana.com</p>
+                        <p><i class="material-icons green-text">location_on</i> Carrera 4 # 12-34, Medellín, Colombia</p>
+                        <hr>
+                        <p class="green-text">📢 ¿Tienes preguntas sobre el cultivo de caña? ¡Escríbenos!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="page-footer green darken-3">
+        <div class="container center-align">
+            <p>© 2025 La Caña de Azúcar - Cultivo, tradición y sostenibilidad</p>
+            <p class="grey-text text-lighten-2"> Un mundo más dulce gracias a la caña</p>
+        </div>
+    </footer>
+
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+    <!-- Activación del carrusel -->
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    // Carrusel
+    var elems = document.querySelectorAll('.carousel');
+    M.Carousel.init(elems, {
+        duration: 200,
+        dist: -80,
+        shift: 40,
+        padding: 20,
+        numVisible: 3,
+        indicators: true
+    });
+
+    // SIDENAV (menú hamburguesa)
+    var elemsSidenav = document.querySelectorAll('.sidenav');
+    M.Sidenav.init(elemsSidenav);
+
+});
+</script>
+</body>
+</html>
