@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login y Registro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+  <link rel="stylesheet" href="/login/https://fonts.googleapis.com/icon?family=Material+Icons"/>
+  <link  rel= "icon"  type= "image/png"  sizes= "32x32"  href= "/favicon/favicon-32x32.png" >
+  <link rel="stylesheet" href="/login/css/style.css"/>
+</head>
+<body>
+
+<div class="login-wrapper">
+  <div class="card login-card z-depth-3">
+    <div class="card-content">
+
+      <!-- Header -->
+      <div class="brand-header">
+        <div class="avatar">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-label">SISTEMA DE USUARIOS</span>
+          <h4 class="brand-title">Login y registro</h4>
+        </div>
+      </div>
+
+      <!-- Mensaje de estado -->
+      <div id="mensaje" class="mensaje-alerta" style="display:none;"></div>
+
+      <!-- Tabs -->
+      <div class="tabs-custom">
+        <button class="tab-btn active" id="tab-login" onclick="switchTab('login')">
+          Iniciar sesión
+        </button>
+        <button class="tab-btn" id="tab-register" onclick="switchTab('register')">
+          Registrarse
+        </button>
+      </div>
+
+      <!-- ===== FORMULARIO LOGIN ===== -->
+      <div id="form-login">
+
+        <div class="row mb-0">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">email</i>
+            <input id="email-login" type="email"/>
+            <label for="email-login">Correo electronico</label>
+          </div>
+        </div>
+
+        <div class="row mb-0">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">lock</i>
+            <input id="password-login" type="password"/>
+            <label for="password-login">Contraseña</label>
+          </div>
+        </div>
+
+        <div class="row options-row">
+          <div class="col s6 right-align" style="margin-left:auto">
+            <a href="#" class="blue-text text-darken-3 forgot-link">¿Olvidaste tu contraseña?</a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s12">
+            <button id="btn-login" onclick="hacerLogin()"
+              class="btn btn-large waves-effect waves-light full-width btn-submit">
+              Entrar
+            </button>
+          </div>
+        </div>
+
+        <p class="center-align grey-text foot-text">
+          ¿No tienes cuenta?
+          <a href="#" class="blue-text text-darken-3" onclick="switchTab('register')">Regístrate</a>
+        </p>
+
+      </div><!-- fin form-login -->
+
+
+      <!-- ===== FORMULARIO REGISTRO ===== -->
+      <div id="form-register" style="display:none;">
+
+        <div class="row mb-0">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">person</i>
+            <input id="nombre" type="text"/>
+            <label for="nombre">Nombre completo</label>
+          </div>
+        </div>
+
+        <div class="row mb-0">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">email</i>
+            <input id="email-register" type="email"/>
+            <label for="email-register">Correo electronico</label>
+          </div>
+        </div>
+
+        <div class="row mb-0">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">lock</i>
+            <input id="password-register" type="password"/>
+            <label for="password-register">Contraseña (mínimo 8 caracteres)</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s12">
+            <button id="btn-register" onclick="hacerRegistro()"
+              class="btn btn-large waves-effect waves-light full-width btn-submit">
+              Crear cuenta
+            </button>
+          </div>
+        </div>
+
+        <p class="center-align grey-text foot-text">
+          ¿Ya tienes cuenta?
+          <a href="#" class="blue-text text-darken-3" onclick="switchTab('login')">Iniciar sesión</a>
+        </p>
+
+      </div><!-- fin form-register -->
+
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+
+  /* ── Cambiar pestaña ── */
+  function switchTab(tab) {
+    document.getElementById('form-login').style.display    = tab === 'login' ? 'block' : 'none';
+    document.getElementById('form-register').style.display = tab === 'register' ? 'block' : 'none';
+    document.getElementById('tab-login').classList.toggle('active', tab === 'login');
+    document.getElementById('tab-register').classList.toggle('active', tab === 'register');
+    ocultarMensaje();
+  }
+
+  /* ── Mostrar / ocultar mensaje ── */
+  function mostrarMensaje(texto, tipo) {
+    const el = document.getElementById('mensaje');
+    el.textContent = texto;
+    el.className = 'mensaje-alerta ' + tipo;
+    el.style.display = 'block';
+  }
+  function ocultarMensaje() {
+    document.getElementById('mensaje').style.display = 'none';
+  }
+
+  /* ── Login ── */
+  async function hacerLogin() {
+    const correo   = document.getElementById('email-login').value.trim();
+    const password = document.getElementById('password-login').value.trim();
+
+    if (!correo || !password) {
+      mostrarMensaje('Por favor completa todos los campos.', 'error');
+      return;
+    }
+
+    const btn = document.getElementById('btn-login');
+    btn.disabled = true;
+    btn.textContent = 'Verificando...';
+
+    try {
+      const res  = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ correo, password })
+      });
+      const data = await res.json();
+
+      if (data.ok) {
+        mostrarMensaje('¡Bienvenido ' + data.nombre + '! Redirigiendo...', 'exito');
+        setTimeout(() => window.location.href = data.redirect, 1000);
+      } else {
+        mostrarMensaje(data.mensaje, 'error');
+        btn.disabled = false;
+        btn.textContent = 'Entrar';
+      }
+    } catch (e) {
+      mostrarMensaje('No se pudo conectar con el servidor.', 'error');
+      btn.disabled = false;
+      btn.textContent = 'Entrar';
+    }
+  }
+
+  /* ── Registro ── */
+  async function hacerRegistro() {
+    const nombre   = document.getElementById('nombre').value.trim();
+    const correo   = document.getElementById('email-register').value.trim();
+    const password = document.getElementById('password-register').value.trim();
+
+    if (!nombre || !correo || !password) {
+      mostrarMensaje('Por favor completa todos los campos.', 'error');
+      return;
+    }
+    if (password.length < 8) {
+      mostrarMensaje('La contraseña debe tener mínimo 8 caracteres.', 'error');
+      return;
+    }
+
+    const btn = document.getElementById('btn-register');
+    btn.disabled = true;
+    btn.textContent = 'Creando cuenta...';
+
+    try {
+      const res  = await fetch('/api/registro', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nombre, correo, password })
+      });
+      const data = await res.json();
+
+      if (data.ok) {
+        mostrarMensaje(data.mensaje + ' Ahora inicia sesión.', 'exito');
+        setTimeout(() => switchTab('login'), 2000);
+      } else {
+        mostrarMensaje(data.mensaje, 'error');
+      }
+    } catch (e) {
+      mostrarMensaje('No se pudo conectar con el servidor.', 'error');
+    }
+
+    btn.disabled = false;
+    btn.textContent = 'Crear cuenta';
+  }
+
+  /* ── Enter para enviar ── */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      if (document.getElementById('form-login').style.display !== 'none') hacerLogin();
+      else hacerRegistro();
+    }
+  });
+
+</script>
+</body>
+</html>
