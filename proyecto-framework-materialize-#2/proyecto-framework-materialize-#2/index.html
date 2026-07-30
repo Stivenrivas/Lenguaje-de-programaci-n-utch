@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Agua</title>
+
+    <!-- el link para poder usar Materialize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- para los iconos que vamos a utilizar -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon/favicon-32x32.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body>
+
+    <!-- la barra de navegacion -->
+    
+    <!-- navbar-fixed, fija la barra en la parte superior al hacer scroll -->
+    <div class="navbar-fixed">
+        <nav class="mi-navbar">
+            <div class="nav-wrapper container">
+                
+                <!-- Logo de la página -->
+                <a href="#" class="brand-logo">
+                    <i class="material-icons"></i> El Agua
+                </a>
+
+                <!-- Botón hamburguesa para pantallas pequeñas -->
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger right">
+                    <i class="material-icons">menu</i>  <!-- Icono de hamburguesa ☰ -->
+                </a>
+
+                <!-- Menú de navegación para pantallas grandes -->
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#importancia">Importancia</a></li>
+                    <li><a href="#tipos">Tipos</a></li>
+                    <li><a href="#datos">Datos</a></li>
+                    <li><a href="#cuidado">Cuidado</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Menú lateral (sidenav) -->
+    <!-- sidenav: Clase de Materialize para menú lateral -->
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#importancia">Importancia</a></li>
+        <li><a href="#tipos">Tipos</a></li>
+        <li><a href="#datos">Datos</a></li>
+        <li><a href="#cuidado">Cuidado</a></li>
+    </ul>
+
+    <!-- Sección principal -->
+    <div id="inicio" class="seccion-hero">
+        <div class="container centro">
+            <h1 class="titulo-hero">El Agua</h1>
+            <p class="subtitulo-hero">El recurso más importante del planeta</p>
+        </div>
+    </div>
+
+    <!-- sección importancia -->
+    <div id="importancia" class="seccion-blanca">
+        <div class="container">
+            <h2 class="titulo-seccion">¿Por qué es importante el agua?</h2>
+
+            <div class="row">
+                <!-- Tarjeta 1 -->
+                <div class="col s12 m4">
+                    <div class="card mi-card">
+                        <div class="card-content centro">
+                            <i class="material-icons icono-grande azul">favorite</i>
+                            <h5>Para la vida</h5>
+                            <p>El cuerpo humano necesita agua para sobrevivir. Sin agua no podemos vivir más de 3 días.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2 -->
+                <div class="col s12 m4">
+                    <div class="card mi-card">
+                        <div class="card-content centro">
+                            <i class="material-icons icono-grande verde">eco</i>
+                            <h5>Para las plantas</h5>
+                            <p>Las plantas necesitan agua para crecer y hacer la fotosíntesis. Sin agua no habría vegetación.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div class="col s12 m4">
+                    <div class="card mi-card">
+                        <div class="card-content centro">
+                            <i class="material-icons icono-grande celeste">agriculture</i>
+                            <h5>Para la agricultura</h5>
+                            <p>Los cultivos dependen del agua para crecer. El riego es esencial para producir alimentos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- sección tipos de agua -->
+    <div id="tipos" class="seccion-gris">
+        <div class="container">
+            <h2 class="titulo-seccion">Tipos de agua</h2>
+
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="collection-header"><h5>Según su estado</h5></div>
+                    <ul class="collection">
+                        <li class="collection-item"><strong>Líquida</strong> – La más común, la que usamos a diario</li>
+                        <li class="collection-item"><strong>Sólida (hielo)</strong> – Se forma cuando baja de 0°C</li>
+                        <li class="collection-item"><strong>Gaseosa (vapor)</strong> – Cuando el agua se evapora por el calor</li>
+                    </ul>
+                </div>
+
+                <div class="col s12 m6">
+                    <div class="collection-header"><h5>Según su origen</h5></div>
+                    <ul class="collection">
+                        <li class="collection-item"><strong>Salada</strong> – Está en mares y océanos (97% del agua)</li>
+                        <li class="collection-item"><strong>Dulce</strong> – Ríos, lagos y glaciares (3% del agua)</li>
+                        <li class="collection-item"><strong>Subterránea</strong> – Está debajo de la tierra</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- sección datos curiosos -->
+    <div id="datos" class="seccion-azul">
+        <div class="container">
+            <h2 class="titulo-seccion blanco">Datos curiosos</h2>
+
+            <div class="row">
+                <div class="col s12 m3">
+                    <div class="dato-numero">
+                        <h3>71%</h3>
+                        <p>de la Tierra está cubierta de agua</p>
+                    </div>
+                </div>
+
+                <div class="col s12 m3">
+                    <div class="dato-numero">
+                        <h3>60%</h3>
+                        <p>del cuerpo humano es agua</p>
+                    </div>
+                </div>
+
+                <div class="col s12 m3">
+                    <div class="dato-numero">
+                        <h3>2L</h3>
+                        <p>de agua debe tomar una persona al día</p>
+                    </div>
+                </div>
+
+                <div class="col s12 m3">
+                    <div class="dato-numero">
+                        <h3>3 días</h3>
+                        <p>es lo máximo que vivimos sin agua</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- sección cuidado del agua -->
+    <div id="cuidado" class="seccion-blanca">
+        <div class="container">
+            <h2 class="titulo-seccion">¿Cómo cuidar el agua?</h2>
+
+            <div class="row">
+                <div class="col s12 m6">
+                    <ul class="lista-consejos">
+                        <li><img src="img/cerrar-grifo.jpg" alt="Cerrar grifo" class="imagen"> Cerrar el grifo mientras te lavas los dientes</li>
+                        <li><img src="img/reparfuga.jpg" alt="Reparar fugas" class="imagen"> Reparar las fugas de agua en casa</li>
+                        <li><img src="img/lavadora.jpg" alt="Usar lavadora" class="imagen"> Usar lavadora y lavavajillas llenos</li>
+                    </ul>
+                </div>
+
+                <div class="col s12 m6">
+                    <ul class="lista-consejos">
+                        <li><img src="img/Ducha_AguaCaliente_Beneficios.png" alt="Ducharse" class="imagen"> Ducharse en vez de bañarse en tina</li>
+                        <li><img src="img/regar.plantas.jpg" alt="Regar plantas" class="imagen"> Regar las plantas por la noche</li>
+                        <li><img src="img/basura.jpeg" alt="No tirar basura" class="imagen"> No tirar basura en ríos ni lagos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PIE DE PAGINA -->
+    <footer class="mi-footer">
+        <div class="container centro">
+            <p>Trabajo sobre el Agua &copy; 2025</p>
+            <p>Hecho con 💙 para la clase</p>
+        </div>
+    </footer>
+
+    <!-- ==================================================
+        MATERIALIZE JS (NECESARIO PARA EL MENU HAMBURGUESA)
+        ================================================== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- SCRIPT PARA INICIALIZAR EL MENU LATERAL -->
+    <script>
+        // Esperar a que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', function() {
+            // Seleccionar todos los elementos con clase 'sidenav'
+            var elems = document.querySelectorAll('.sidenav');
+            // Inicializar el menú lateral (sidenav) de Materialize
+            var instances = M.Sidenav.init(elems);
+        });
+
+        // Desplazamiento suave al hacer clic en los enlaces
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();  // Evitar el comportamiento por defecto
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',  // Desplazamiento suave
+                        block: 'start'
+                    });
+                    // CERRAR MENU LATERAL: Si el menú está abierto en móvil, se cierra automáticamente
+                    const sidenav = document.querySelector('.sidenav');
+                    if (sidenav && M.Sidenav.getInstance(sidenav)) {
+                        M.Sidenav.getInstance(sidenav).close();
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

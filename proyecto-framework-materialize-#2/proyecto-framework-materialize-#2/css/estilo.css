@@ -1,0 +1,199 @@
+/* estilos generales */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Clase utilitaria para centrar texto */
+.centro {
+    text-align: center;
+}
+
+/* barra de navegación */
+
+.mi-navbar {
+    background-color: #0c59b2;
+}
+
+/* sección principal */
+
+.seccion-hero {
+    background-color: #1976d2;  /* Color azul de fondo */
+    padding: 100px 0;           /* Espaciado interno vertical */
+    color: white;               /* Texto blanco */
+}
+
+.titulo-hero {
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.subtitulo-hero {
+    font-size: 22px;
+    margin-bottom: 30px;
+}
+
+.mi-boton {
+    background-color: white;
+    color: #1976d2;
+    font-weight: bold;
+}
+
+/* secciónes generales */
+
+/* Fondo blanco */
+.seccion-blanca {
+    background-color: white;
+    padding: 60px 0;
+}
+
+/* Fondo gris claro */
+.seccion-gris {
+    background-color: #f5f5f5;
+    padding: 60px 0;
+}
+
+/* Fondo azul oscuro con texto blanco */
+.seccion-azul {
+    background-color: #0d47a1;
+    padding: 60px 0;
+    color: white;
+}
+
+/* Títulos de cada sección */
+.titulo-seccion {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #1565c0;
+}
+
+/* Variante de título para fondo azul */
+.titulo-seccion.blanco {
+    color: white;
+}
+
+/* Tarjetas */
+
+.mi-card {
+    border-radius: 10px;              /* Bordes redondeados */
+    transition: box-shadow 0.3s;     /* Transición suave al hacer hover */
+}
+
+/* Efecto al pasar el mouse por encima */
+.mi-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Iconos grandes */
+
+.icono-grande {
+    font-size: 50px !important;      /* Tamaño grande para los iconos */
+    margin-bottom: 10px;
+}
+
+/* Colores para los diferentes iconos */
+.azul { color: #1976d2; }
+.verde { color: #388e3c; }
+.celeste { color: #0288d1; }
+.gris { color: #757575; }
+.marron { color: #795548; }
+
+/* Datos curiosos */
+
+.dato-numero {
+    text-align: center;
+    padding: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.4);  /* Borde semitransparente */
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.dato-numero h3 {
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+}
+
+.dato-numero p {
+    font-size: 15px;
+    color: #bbdefb;      /* Azul claro */
+    margin: 5px 0 0 0;
+}
+
+/* Imagenes */
+
+.imagen {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+/* Lista de consejos */
+
+.lista-consejos {
+    list-style: none;    /* Eliminar viñetas */
+    padding: 0;
+}
+
+/* Cada elemento de la lista */
+.lista-consejos li {
+    display: flex;       /* Usar flexbox para alinear imagen y texto */
+    align-items: center; /* Centrar verticalmente */
+    gap: 10px;           /* Espacio entre imagen y texto */
+    font-size: 17px;
+    padding: 12px 0;
+    border-bottom: 1px solid #e0e0e0;  /* Línea separadora */
+}
+
+/* Pie de página */
+
+.mi-footer {
+    background-color: #1565c0;
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.mi-footer p {
+    margin: 5px 0;
+    font-size: 15px;
+}
+
+/* Media Queries */
+
+/* Para pantallas de hasta 600px (móviles pequeños) */
+@media (max-width: 600px) {
+    .titulo-hero {
+        font-size: 40px;      /* Reducir tamaño del título */
+    }
+
+    .subtitulo-hero {
+        font-size: 18px;
+    }
+
+    .titulo-seccion {
+        font-size: 28px;
+    }
+
+    .icono-grande {
+        font-size: 40px !important;
+    }
+}
+
+/* Para pantallas de hasta 1000px (tablets y móviles grandes) */
+@media only screen and (max-width: 1000px) {
+    /* Ajustar padding de las secciones en pantallas pequeñas */
+    .seccion-gris, .seccion-blanca, .seccion-azul {
+        padding: 40px 20px;
+    }
+    
+    /* El contenedor ocupa el 90% del ancho en lugar de tener márgenes fijos */
+    .container {
+        width: 90%;
+    }
+}
