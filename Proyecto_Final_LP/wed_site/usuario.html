@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkWork - Explorar</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
+</head>
+<body>
+
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">
+        <span class="logo-icon">LW</span>
+        <span class="logo-text">LinkWork</span>
+      </a>
+      <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#!" class="nav-active waves-effect dd-section-trigger" data-section="empleos"><i class="material-icons left">work</i>Empleos</a></li>
+        <li><a href="#!" class="waves-effect dd-section-trigger" data-section="servicios"><i class="material-icons left">build</i>Servicios</a></li>
+        <li><a href="#!" class="waves-effect dd-section-trigger" data-section="postulaciones"><i class="material-icons left">assignment</i>Postulaciones</a></li>
+        <li><a href="#!" class="waves-effect dd-section-trigger" data-section="recomendaciones"><i class="material-icons left">recommend</i>Recomendaciones</a></li>
+        <li><a href="#!" class="waves-effect dd-section-trigger" data-section="chat"><i class="material-icons left">chat</i>Chat</a></li>
+        <li><a class="dropdown-trigger waves-effect" href="#!" data-target="user-menu">
+          <i class="material-icons left">person</i>
+          <span class="username-text" id="navUsername">Usuario</span>
+          <i class="material-icons right">arrow_drop_down</i>
+        </a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <ul id="user-menu" class="dropdown-content user-dropdown">
+    <li class="dropdown-user-header">
+      <div class="dropdown-avatar" id="ddAvatar">LW</div>
+      <div class="dropdown-user-info">
+        <strong id="ddName">Usuario</strong>
+        <span id="ddEmail">email</span>
+        <span class="dropdown-role-badge" id="ddRole">usuario</span>
+      </div>
+    </li>
+    <li class="divider"></li>
+    <li><a href="#!"><i class="material-icons">account_circle</i>Mi Perfil</a></li>
+    <li><a href="#!"><i class="material-icons">settings</i>Configuración</a></li>
+    <li class="divider"></li>
+    <li><a href="#" id="logoutBtn"><i class="material-icons">exit_to_app</i>Cerrar Sesión</a></li>
+  </ul>
+
+  <ul class="sidenav" id="mobile-nav">
+    <li class="sidenav-header">
+      <span class="logo-icon" style="width:32px;height:32px;background:linear-gradient(135deg,var(--accent),var(--accent-light));border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:white;">LW</span>
+      LinkWork
+    </li>
+    <li><a href="#!" class="nav-active dd-section-trigger" data-section="empleos"><i class="material-icons">work</i>Empleos</a></li>
+    <li><a href="#!" class="dd-section-trigger" data-section="servicios"><i class="material-icons">build</i>Servicios</a></li>
+    <li><a href="#!" class="dd-section-trigger" data-section="postulaciones"><i class="material-icons">assignment</i>Postulaciones</a></li>
+    <li><a href="#!" class="dd-section-trigger" data-section="recomendaciones"><i class="material-icons">recommend</i>Recomendaciones</a></li>
+    <li><a href="#!" class="dd-section-trigger" data-section="chat"><i class="material-icons">chat</i>Chat</a></li>
+    <li class="divider"></li>
+    <li><a href="#!" id="mobileLogout"><i class="material-icons">exit_to_app</i>Cerrar Sesión</a></li>
+  </ul>
+
+  <main>
+    <div class="container">
+
+      <div id="section-empleos" class="section-content">
+        <div class="explore-header">
+          <div>
+            <h4 class="section-title" style="margin:0;"><i class="material-icons">work</i>Empleos Disponibles</h4>
+            <p style="color:var(--text-muted);margin:5px 0 0 0;font-size:14px;">Encuentra el trabajo ideal para ti</p>
+          </div>
+          <span class="badge-count" id="jobCount">0</span>
+        </div>
+        <div id="jobList"></div>
+      </div>
+
+      <div id="section-servicios" class="section-content" style="display:none;">
+        <div class="explore-header">
+          <div>
+            <h4 class="section-title" style="margin:0;"><i class="material-icons">build</i>Servicios Disponibles</h4>
+            <p style="color:var(--text-muted);margin:5px 0 0 0;font-size:14px;">Servicios profesionales a tu alcance</p>
+          </div>
+          <span class="badge-count" id="serviceCount">0</span>
+        </div>
+        <div id="serviceList"></div>
+      </div>
+
+      <div id="section-postulaciones" class="section-content" style="display:none;">
+        <div class="explore-header">
+          <div>
+            <h4 class="section-title" style="margin:0;"><i class="material-icons">assignment</i>Mis Postulaciones</h4>
+            <p style="color:var(--text-muted);margin:5px 0 0 0;font-size:14px;">Seguimiento de tus solicitudes</p>
+          </div>
+        </div>
+        <div id="postulacionesList"></div>
+      </div>
+
+      <div id="section-recomendaciones" class="section-content" style="display:none;">
+        <div class="explore-header">
+          <div>
+            <h4 class="section-title" style="margin:0;"><i class="material-icons">recommend</i>Recomendaciones</h4>
+            <p style="color:var(--text-muted);margin:5px 0 0 0;font-size:14px;">Oportunidades sugeridas para ti</p>
+          </div>
+        </div>
+        <div id="recomendacionesList"></div>
+      </div>
+
+      <div id="section-chat" class="section-content" style="display:none;">
+        <div class="explore-header">
+          <div>
+            <h4 class="section-title" style="margin:0;"><i class="material-icons">chat</i>Mensajes</h4>
+            <p style="color:var(--text-muted);margin:5px 0 0 0;font-size:14px;">Conversaciones con empleadores y proveedores</p>
+          </div>
+        </div>
+        <div id="chatContainer">
+          <div id="conversationsList"></div>
+          <div id="chatThread" style="display:none;">
+            <div id="chatThreadHeader" style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+              <button id="chatBackBtn" class="btn-flat" style="padding:0 8px;"><i class="material-icons">arrow_back</i></button>
+              <h5 id="chatThreadTitle" style="margin:0;font-weight:600;font-size:16px;"></h5>
+            </div>
+            <div id="chatMessages" class="chat-box"></div>
+            <form id="chatForm" style="display:flex;gap:8px;margin-top:12px;">
+              <div class="input-field" style="flex:1;margin:0;">
+                <input type="text" id="chatInput" placeholder="Escribe un mensaje..." required>
+              </div>
+              <button type="submit" class="btn blue darken-2" style="height:44px;min-width:44px;padding:0 16px;">
+                <i class="material-icons">send</i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="applyModal" class="modal" style="border-radius:var(--radius);">
+    <div class="modal-content" style="padding:24px;">
+      <h5 id="applyModalTitle" style="font-weight:700;margin:0 0 16px;display:flex;align-items:center;gap:8px;">
+        <i class="material-icons" style="color:var(--accent);">send</i> Aplicar
+      </h5>
+      <div class="input-field">
+        <i class="material-icons prefix">message</i>
+        <textarea id="applyMessage" class="materialize-textarea" style="min-height:80px;"></textarea>
+        <label for="applyMessage">Mensaje (opcional)</label>
+      </div>
+    </div>
+    <div class="modal-footer" style="padding:8px 24px 16px;border-top:1px solid var(--card-border);">
+      <a href="#!" class="modal-close btn-flat" style="font-weight:600;color:var(--text-muted);">Cancelar</a>
+      <a href="#!" class="btn blue darken-2" id="applySubmitBtn" style="margin-left:8px;">
+        <i class="material-icons left">send</i> Enviar Solicitud
+      </a>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../Login/js/api.js"></script>
+  <script src="js/nav.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async function () {
+      let user;
+      try { user = await LW.me(); } catch (_) { window.location.href = '../Login/index.html'; return; }
+      if (user.role !== 'usuario') { window.location.href = '../Login/index.html'; return; }
+
+      let currentChat = { tipo: null, refId: null, convId: null, otroNombre: null, otroEmail: null, otroId: null };
+      let applyData = { type: null, id: null, title: null };
+
+      // Fill dropdown header
+      document.getElementById('ddName').textContent = user.username;
+      document.getElementById('ddEmail').textContent = user.email;
+      document.getElementById('ddRole').textContent = user.role;
+      const initials = (user.username || 'U').substring(0, 2).toUpperCase();
+      document.getElementById('ddAvatar').textContent = initials;
+      document.getElementById('navUsername').textContent = user.username;
+
+      // Dropdown / navbar section triggers
+      document.querySelectorAll('.dd-section-trigger').forEach(btn => {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          const section = this.dataset.section;
+          // Highlight navbar link
+          document.querySelectorAll('#nav-mobile li a').forEach(a => a.classList.remove('nav-active'));
+          document.querySelectorAll('.sidenav li a').forEach(a => a.classList.remove('nav-active'));
+          this.classList.add('nav-active');
+          // Switch section
+          document.querySelectorAll('.section-content').forEach(s => s.style.display = 'none');
+          document.getElementById('section-' + section).style.display = 'block';
+          renderCurrentSection = section;
+          switch (section) {
+            case 'empleos': renderJobs(); break;
+            case 'servicios': renderServices(); break;
+            case 'postulaciones': renderPostulaciones(); break;
+            case 'recomendaciones': renderRecomendaciones(); break;
+            case 'chat': renderConversaciones(); break;
+          }
+          // Close sidenav on mobile
+          const sidenavInstance = M.Sidenav.getInstance(document.getElementById('mobile-nav'));
+          if (sidenavInstance) sidenavInstance.close();
+        });
+      });
+
+      const applyModal = M.Modal.init(document.getElementById('applyModal'), { dismissible: true });
+
+      document.getElementById('applySubmitBtn').addEventListener('click', async function () {
+        const msg = document.getElementById('applyMessage').value;
+        try {
+          await LW.aplicar(applyData.type, applyData.id, msg);
+          applyModal.close();
+          document.getElementById('applyMessage').value = '';
+          M.textareaAutoResize && M.textareaAutoResize(document.getElementById('applyMessage'));
+          Swal.fire({ icon: 'success', iconColor: '#10B981', title: 'Solicitud enviada', text: 'Tu solicitud ha sido registrada exitosamente.', timer: 2000, showConfirmButton: false, background: '#FFFFFF', color: '#1E293B', padding: '24px' });
+          if (renderCurrentSection === 'empleos') renderJobs();
+          else if (renderCurrentSection === 'servicios') renderServices();
+        } catch (err) {
+          Swal.fire({ icon: 'error', iconColor: '#EF4444', title: 'Error', text: err.message, background: '#FFFFFF', color: '#1E293B', confirmButtonColor: '#2563EB', padding: '24px' });
+        }
+      });
+
+      document.getElementById('chatForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const msg = document.getElementById('chatInput').value.trim();
+        if (!msg) return;
+        try {
+          const msgPayload = {
+            tipo_ref: currentChat.tipo,
+            ref_id: currentChat.refId,
+            mensaje: msg
+          };
+          if (currentChat.otroId) {
+            msgPayload.destinatario_id = currentChat.otroId;
+            msgPayload.destinatario_nombre = currentChat.otroNombre;
+          } else if (currentChat.otroEmail) {
+            msgPayload.destinatario_email = currentChat.otroEmail;
+            msgPayload.destinatario_nombre = currentChat.otroNombre;
+          }
+          await LW.enviarMensaje(msgPayload);
+          document.getElementById('chatInput').value = '';
+          loadChatThread(currentChat.tipo, currentChat.refId);
+        } catch (err) {
+          Swal.fire({ icon: 'error', iconColor: '#EF4444', title: 'Error', text: err.message, background: '#FFFFFF', color: '#1E293B', confirmButtonColor: '#2563EB', padding: '24px' });
+        }
+      });
+
+      document.getElementById('chatBackBtn').addEventListener('click', function () {
+        document.getElementById('chatThread').style.display = 'none';
+        document.getElementById('conversationsList').style.display = 'block';
+      });
+
+      function openApplyModal(type, id, title) {
+        applyData = { type, id, title };
+        document.getElementById('applyModalTitle').innerHTML = '<i class="material-icons" style="color:var(--accent);">send</i> Aplicar a ' + title;
+        document.getElementById('applyMessage').value = '';
+        M.textareaAutoResize && M.textareaAutoResize(document.getElementById('applyMessage'));
+        applyModal.open();
+      }
+
+      function openChatTab(tipo, refId, titulo, ownerEmail, ownerName) {
+        currentChat.otroEmail = ownerEmail || null;
+        currentChat.otroNombre = ownerName || null;
+        currentChat.otroId = null;
+        document.querySelectorAll('#nav-mobile li a').forEach(a => a.classList.remove('nav-active'));
+        document.querySelectorAll('.sidenav li a').forEach(a => a.classList.remove('nav-active'));
+        document.querySelectorAll('.section-content').forEach(s => s.style.display = 'none');
+        document.getElementById('section-chat').style.display = 'block';
+        renderCurrentSection = 'chat';
+        renderConversaciones().then(() => loadChatThread(tipo, refId));
+      }
+
+      async function renderJobs() {
+        const container = document.getElementById('jobList');
+        try {
+          const jobs = await LW.getEmpleos();
+          document.getElementById('jobCount').textContent = jobs.length;
+          if (jobs.length === 0) {
+            container.innerHTML = '<div class="empty-state"><i class="material-icons empty-icon">work_off</i><h5>Sin empleos disponibles</h5><p>No hay ofertas laborales por el momento. Vuelve pronto.</p></div>';
+            return;
+          }
+          container.innerHTML = jobs.map(j => {
+            const isHourly = j.tipo && j.tipo === 'hora';
+            return '<div class="listing-card">' +
+              '<div class="listing-badge jobs">Empleo</div>' +
+              (j.image ? '<div class="listing-img"><img src="' + j.image + '" alt="' + escapeHtml(j.title) + '"></div>' : '') +
+              '<div class="listing-content">' +
+                '<div class="listing-header">' +
+                  '<h3>' + escapeHtml(j.title) + '</h3>' +
+                  '<span class="listing-company">' + escapeHtml(j.company) + '</span>' +
+                '</div>' +
+                '<div class="listing-details">' +
+                  '<span><i class="material-icons">location_on</i> ' + escapeHtml(j.location) + '</span>' +
+                  (j.salary ? '<span><i class="material-icons">attach_money</i> $' + escapeHtml(j.salary) + '</span>' : '') +
+                  (j.tipo ? '<span class="status-badge ' + (isHourly ? 'pendiente' : 'aceptado') + '">' + (isHourly ? 'Por Hora' : 'Fijo') + '</span>' : '') +
+                  (isHourly && j.horas ? '<span><i class="material-icons">schedule</i> ' + j.horas + 'h/sem</span>' : '') +
+                '</div>' +
+                '<p class="listing-desc">' + escapeHtml(j.description) + '</p>' +
+              '</div>' +
+              '<div class="listing-action">' +
+                '<button class="btn-listing apply-btn" data-type="empleo" data-id="' + j.id + '" data-title="' + escapeHtml(j.title) + '">Aplicar <i class="material-icons">send</i></button>' +
+                '<button class="btn-listing-sm chat-listing-btn" data-type="empleo" data-id="' + j.id + '" data-title="' + escapeHtml(j.title) + '" data-email="' + escapeHtml(j.email) + '" data-ownername="' + escapeHtml(j.employer || '') + '"><i class="material-icons" style="font-size:14px;">chat</i> Chat</button>' +
+              '</div>' +
+            '</div>';
+          }).join('');
+          attachListingEvents();
+        } catch (err) {
+          container.innerHTML = '<div class="empty-state"><i class="material-icons empty-icon">error</i><h5>Error al cargar</h5><p>' + escapeHtml(err.message) + '</p></div>';
+        }
+      }
+
+      async function renderServices() {
+        const container = document.getElementById('serviceList');
+        try {
+          const services = await LW.getServicios();
+          document.getElementById('serviceCount').textContent = services.length;
+          if (services.length === 0) {
+            container.innerHTML = '<div class="empty-state"><i class="material-icons empty-icon">miscellaneous_services</i><h5>Sin servicios disponibles</h5><p>No hay servicios publicados por el momento.</p></div>';
+            return;
+          }
+          container.innerHTML = services.map(s => {
+            return '<div class="listing-card">' +
+              '<div class="listing-badge services">Servicio</div>' +
+              (s.image ? '<div class="listing-img"><img src="' + s.image + '" alt="' + escapeHtml(s.title) + '"></div>' : '') +
+              '<div class="listing-content">' +
+                '<div class="listing-header">' +
+                  '<h3>' + escapeHtml(s.title) + '</h3>' +
+                  '<span class="listing-category">' + escapeHtml(s.category) + '</span>' +
+                '</div>' +
+                '<div class="listing-details">' +
+                  (s.price ? '<span><i class="material-icons">attach_money</i> $' + escapeHtml(s.price) + '</span>' : '') +
+                  '<span><i class="material-icons">person</i> ' + escapeHtml(s.provider || 'Proveedor') + '</span>' +
+                '</div>' +
+                '<p class="listing-desc">' + escapeHtml(s.description) + '</p>' +
+              '</div>' +
+              '<div class="listing-action">' +
+                '<button class="btn-listing apply-btn" data-type="servicio" data-id="' + s.id + '" data-title="' + escapeHtml(s.title) + '">Solicitar <i class="material-icons">send</i></button>' +
+                '<button class="btn-listing-sm chat-listing-btn" data-type="servicio" data-id="' + s.id + '" data-title="' + escapeHtml(s.title) + '" data-email="' + escapeHtml(s.providerEmail) + '" data-ownername="' + escapeHtml(s.provider || '') + '"><i class="material-icons" style="font-size:14px;">chat</i> Chat</button>' +
+              '</div>' +
+            '</div>';
+          }).join('');
+          attachListingEvents();
+        } catch (err) {
+          container.innerHTML = '<div class="empty-state"><i class="material-icons empty-icon">error</i><h5>Error al cargar</h5><p>' + escapeHtml(err.message) + '</p></div>';
+        }
+      }
+
+      function attachListingEvents() {
+        document.querySelectorAll('.apply-btn').forEach(btn => {
+          btn.addEventListener('click', function () {
+            openApplyModal(this.dataset.type, this.dataset.id, this.dataset.title);
+          });
+        });
+        document.querySelectorAll('.chat-listing-btn').forEach(btn => {
+          btn.addEventListener('click', function () {
+            openChatTab(this.dataset.type, this.dataset.id, this.dataset.title, this.dataset.email, this.dataset.ownername);
+          });
+        });
+      }
+
+      async function renderPostulaciones() {
+        const container = document.getElementById('postulacionesList');
+        try {
+          const apps = await LW.aplicacionesEnviadas();
+          if (apps.length === 0) {
+            container.innerHTML = '<div class="empty-state"><i class="material-icons empty-icon">assignment</i><h5>Sin postulaciones</h5><p>Aún no has aplicado a ninguna oferta. Explora empleos y servicios disponibles.</p></div>';
+            return;
+          }
+          let contratos = [];
+          try { contratos = await LW.misContratos(); } catch (_) {}
+          const contratoMap = {};
+          contratos.forEach(c => { contratoMap[c.aplicacion_id] = c; });
+
+          container.innerHTML = apps.map(a => {
+            const statusClass = a.status || 'pendiente';
+            const statusText = a.status === 'aceptado' ? 'Aceptado' : a.status === 'rechazado' ? 'Rechazado' : 'Pendiente';
+            const tipoClass = a.tipo === 'servicio' ? 'services' : 'jobs';
+            const contrato = contratoMap[a.id];
+            return '<div class="listing-card">' +
+              '<div class="listing-badge ' + tipoClass + '">' + (a.tipo === 'servicio' ? 'Servicio' : 'Empleo') + '</div>' +
+              '<div class="listing-content">' +
+                '<div class="listing-header">' +
+                  '<h3>' + escapeHtml(a.ref_titulo || a.title || 'Sin título') + '</h3>' +
+                '</div>' +
+                '<div style="margin:6px 0;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">' +
+                  '<span class="status-badge ' + statusClass + '">' + statusText + '</span>' +
+                '</div>' +
+                (a.mensaje ? '<p class="listing-desc" style="-webkit-line-clamp:3;"><strong>Tu mensaje:</strong> ' + escapeHtml(a.mensaje) + '</p>' : '') +
+                (contrato ? '<div style="margin-top:8px;padding:8px 12px;background:#F0FDF4;border-radius:8px;border:1px solid #A7F3D0;font-size:13px;">' +
+                  '<strong style="color:#047857;">Contrato activo</strong><br>' +
+                  (contrato.detalles ? escapeHtml(contrato.detalles) : '') +
+                  (contrato.fecha ? '<br><span style="color:var(--text-muted);">Inicio: ' + contrato.fecha + '</span>' : '') +
+                '</div>' : '') +
+              '</div>' +
+              '<div class="listing-action">' +
+                '<button class="btn-listing-sm chat-listing-btn" data-type="' + a.tipo + '" data-id="' + a.ref_id + '" data-title="' + escapeHtml(a.ref_titulo || '') + '" data-email="' + escapeHtml(a.propietario_email) + '"><i class="material-icons" style="font-size:14px;">chat</i> Chat</button>' +
+              '</div>' +
+            '</div>';
+          }).join('');
+          document.querySelectorAll('#postulacionesList .chat-listing-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+              openChatTab(this.dataset.type, this.dataset.id, this.dataset.title, this.dataset.email);
+            });
+          });
+        } catch (err) {
+          container.innerHTML = '<div class="empty-state"><i class="material-icons empty-icon">error</i><h5>Error al cargar</h5><p>' + escapeHtml(err.message) + '</p></div>';
+        }
+      }
+
+      async function renderRecomendaciones() {
+        const container = document.getElementById('recomendacionesList');
+        try {
+          const recs = await LW.recomendaciones();
+          if (recs.length === 0) {
+            container.innerHTML = '<div class="empty-state"><i class="material-icons empty-icon">thumb_up</i><h5>Sin recomendaciones</h5><p>Completa tu perfil y aplica a más ofertas para recibir recomendaciones personalizadas.</p></div>';
+            return;
+          }
+          container.innerHTML = '<div style="background:#EEF2FF;border:1px solid #C7D2FE;border-radius:var(--radius);padding:14px 18px;margin-bottom:16px;font-size:13px;color:var(--text-secondary);display:flex;align-items:center;gap:10px;">' +
+            '<i class="material-icons" style="color:var(--accent);font-size:20px;">info</i> ' +
+            'Completa entre 48 y 56 horas semanales para un rendimiento óptimo' +
+          '</div>' +
+          recs.map(r => {
+            const horasActuales = r.horas_actuales || 0;
+            const minHoras = 48;
+            const maxHoras = 56;
+            const necesidadMin = Math.max(0, minHoras - horasActuales);
+            const necesidadMax = Math.max(0, maxHoras - horasActuales);
+            return '<div class="rec-card">' +
+              '<h6>' + escapeHtml(r.titulo) + '</h6>' +
+              '<p>' + escapeHtml(r.company || '') + ' &middot; <span class="rec-badge">Recomendado</span></p>' +
+              '<p><i class="material-icons" style="font-size:14px;vertical-align:middle;">schedule</i> Horas actuales: <strong>' + horasActuales + 'h</strong> &middot; Necesitas <strong>' + necesidadMin + 'h &ndash; ' + necesidadMax + 'h</strong> más para rango óptimo</p>' +
+              '<button class="btn-listing apply-btn" data-type="' + (r.tipo || 'empleo') + '" data-id="' + r.id + '" data-title="' + escapeHtml(r.titulo) + '" style="margin-top:8px;">Aplicar <i class="material-icons">send</i></button>' +
+            '</div>';
+          }).join('');
+          document.querySelectorAll('#recomendacionesList .apply-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+              openApplyModal(this.dataset.type, this.dataset.id, this.dataset.title);
+            });
+          });
+        } catch (err) {
+          container.innerHTML = '<div class="empty-state"><i class="material-icons empty-icon">error</i><h5>Error al cargar</h5><p>' + escapeHtml(err.message) + '</p></div>';
+        }
+      }
+
+      async function renderConversaciones() {
+        const container = document.getElementById('conversationsList');
+        container.style.display = 'block';
+        document.getElementById('chatThread').style.display = 'none';
+        try {
+          const convs = await LW.conversaciones();
+          if (convs.length === 0) {
+            container.innerHTML = '<div class="empty-state"><i class="material-icons empty-icon">chat</i><h5>Sin conversaciones</h5><p>No tienes mensajes aún. Inicia contacto desde un empleo o servicio.</p></div>';
+            return;
+          }
+          container.innerHTML = '<div class="collection" style="margin:0;">' +
+            convs.map(c => {
+              const tipoClass = c.tipo === 'servicio' ? 'services' : 'jobs';
+              return '<div class="collection-item avatar conv-item" style="cursor:pointer;" data-tipo="' + c.tipo + '" data-refid="' + c.ref_id + '" data-otro="' + escapeHtml(c.otro_nombre) + '" data-otroid="' + (c.otro_id || '') + '" data-convid="' + (c.id || '') + '">' +
+                '<i class="material-icons circle" style="background:' + (c.tipo === 'servicio' ? 'linear-gradient(135deg,var(--success),#34D399)' : 'linear-gradient(135deg,var(--accent),var(--accent-light))') + ';">' + (c.tipo === 'servicio' ? 'build' : 'work') + '</i>' +
+                '<span class="title">' + escapeHtml(c.otro_nombre) + '</span>' +
+                '<p>' +
+                  '<span class="status-badge ' + tipoClass + '" style="font-size:10px;padding:1px 6px;color:white;border:none;">' + (c.tipo === 'servicio' ? 'Servicio' : 'Empleo') + '</span> ' +
+                  (c.ref_titulo ? escapeHtml(c.ref_titulo) + '<br>' : '') +
+                  (c.last_message ? escapeHtml(c.last_message.substring(0, 60)) + (c.last_message.length > 60 ? '...' : '') : '') +
+                '</p>' +
+                (c.unread > 0 ? '<span class="badge" style="background:var(--accent);color:white;border-radius:50px;font-size:11px;min-width:22px;height:22px;line-height:22px;text-align:center;float:right;margin-top:8px;">' + c.unread + '</span>' : '') +
+              '</div>';
+            }).join('') +
+          '</div>';
+          document.querySelectorAll('.conv-item').forEach(item => {
+            item.addEventListener('click', function () {
+              const tipo = this.dataset.tipo;
+              const refId = this.dataset.refid;
+              const otroNombre = this.dataset.otro;
+              currentChat.otroNombre = otroNombre;
+              currentChat.otroId = this.dataset.otroid;
+              currentChat.convId = this.dataset.convid;
+              loadChatThread(tipo, refId);
+            });
+          });
+        } catch (err) {
+          container.innerHTML = '<div class="empty-state"><i class="material-icons empty-icon">error</i><h5>Error al cargar</h5><p>' + escapeHtml(err.message) + '</p></div>';
+        }
+      }
+
+      async function loadChatThread(tipo, refId) {
+        currentChat.tipo = tipo;
+        currentChat.refId = refId;
+        document.getElementById('conversationsList').style.display = 'none';
+        document.getElementById('chatThread').style.display = 'block';
+        document.getElementById('chatThreadTitle').textContent = 'Chat';
+        const msgsContainer = document.getElementById('chatMessages');
+        msgsContainer.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:20px;"><i class="material-icons">hourglass_empty</i> Cargando mensajes...</div>';
+        try {
+          const msgs = await LW.getMensajes(tipo, refId);
+          if (msgs.length === 0) {
+            msgsContainer.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:20px;">No hay mensajes aún. Envía el primero.</div>';
+          } else {
+            msgsContainer.innerHTML = msgs.map(m => {
+              const isMine = m.es_mio || m.remitente_id === user.id;
+              return '<div class="chat-msg ' + (isMine ? 'mine' : 'theirs') + '">' +
+                (m.remitente ? '<div class="msg-author">' + escapeHtml(m.remitente) + '</div>' : '') +
+                '<div>' + escapeHtml(m.mensaje) + '</div>' +
+                (m.created_at ? '<div class="msg-time">' + m.created_at + '</div>' : '') +
+              '</div>';
+            }).join('');
+            msgsContainer.scrollTop = msgsContainer.scrollHeight;
+          }
+          if (currentChat.convId) {
+            try { await LW.marcarLeido(currentChat.convId); } catch (_) {}
+          }
+        } catch (err) {
+          msgsContainer.innerHTML = '<div style="text-align:center;color:var(--accent2);padding:20px;">Error: ' + escapeHtml(err.message) + '</div>';
+        }
+      }
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+
+      renderJobs();
+    });
+  </script>
+</body>
+</html>

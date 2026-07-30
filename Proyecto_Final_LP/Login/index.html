@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkWork - Inicio</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="css/style.css?v=20260722">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+</head>
+<body>
+
+  <div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <div class="container">
+    <div class="row" style="margin-bottom: 0;">
+      <div class="col s12 m8 l5 offset-m2 offset-l3">
+        <div class="brand-header">
+          <div class="brand-logo-large">
+            <div class="logo-icon">LW</div>
+            <span class="logo-text">LinkWork</span>
+          </div>
+          <p class="brand-tagline">Conectando talento y oportunidades</p>
+        </div>
+
+        <div class="auth-toggle">
+          <button class="auth-tab active" id="showLoginBtn">Iniciar Sesión</button>
+          <button class="auth-tab" id="showRegisterBtn">Registrarse</button>
+        </div>
+
+        <!-- LOGIN -->
+        <div class="card" id="loginCard">
+          <div class="card-content">
+            <form id="loginForm">
+              <div class="input-field">
+                <i class="material-icons prefix">email</i>
+                <input type="email" id="loginEmail" class="validate" required autocomplete="email">
+                <label for="loginEmail">Correo electrónico</label>
+              </div>
+              <div class="input-field password-wrapper">
+                <i class="material-icons prefix">lock</i>
+                <input type="password" id="loginPassword" class="validate" required autocomplete="current-password">
+                <label for="loginPassword">Contraseña</label>
+                <button type="button" class="password-toggle" onclick="togglePW('loginPassword', this)">
+                  <i class="material-icons">visibility_off</i>
+                </button>
+              </div>
+              <button type="submit" id="loginBtn" class="btn waves-effect waves-light blue darken-2 full-width">
+                Ingresar
+                <i class="material-icons right">arrow_forward</i>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- REGISTER -->
+        <div class="card" id="registerCard" style="display:none;">
+          <div class="card-content">
+            <form id="registerForm">
+              <div class="input-field">
+                <i class="material-icons prefix">person</i>
+                <input type="text" id="regUsername" class="validate" required>
+                <label for="regUsername">Usuario</label>
+              </div>
+              <div class="input-field">
+                <i class="material-icons prefix">email</i>
+                <input type="email" id="regEmail" class="validate" required>
+                <label for="regEmail">Correo electrónico</label>
+              </div>
+              <div class="input-field">
+                <i class="material-icons prefix">phone</i>
+                <input type="tel" id="regPhone" class="validate" required>
+                <label for="regPhone">Teléfono</label>
+              </div>
+              <div class="input-field password-wrapper">
+                <i class="material-icons prefix">lock</i>
+                <input type="password" id="regPassword" class="validate" required minlength="6">
+                <label for="regPassword">Contraseña (mín. 6 caracteres)</label>
+                <button type="button" class="password-toggle" onclick="togglePW('regPassword', this)">
+                  <i class="material-icons">visibility_off</i>
+                </button>
+              </div>
+              <div class="input-field">
+                <i class="material-icons prefix">badge</i>
+                <select id="regRole">
+                  <option value="" disabled selected>Selecciona tu rol</option>
+                  <option value="usuario">Usuario</option>
+                  <option value="empleador">Empleador</option>
+                  <option value="proveedor">Proveedor</option>
+                </select>
+                <label>Rol</label>
+              </div>
+              <button type="submit" id="registerBtn" class="btn waves-effect waves-light green darken-2 full-width">
+                Crear cuenta
+                <i class="material-icons right">person_add</i>
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/api.js?v=20260722b"></script>
+  <script src="js/app.js?v=20260722b"></script>
+</body>
+</html>

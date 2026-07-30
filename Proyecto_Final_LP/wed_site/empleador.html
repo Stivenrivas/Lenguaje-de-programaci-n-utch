@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkWork - Empleador</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
+</head>
+<body>
+
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">
+        <span class="logo-icon">LW</span>
+        <span class="logo-text">LinkWork</span>
+      </a>
+      <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#!" class="nav-active waves-effect dd-section-trigger" data-section="publicar"><i class="material-icons left">add_circle</i>Publicar</a></li>
+        <li><a href="#!" class="waves-effect dd-section-trigger" data-section="misempleos"><i class="material-icons left">work</i>Mis Empleos</a></li>
+        <li><a href="#!" class="waves-effect dd-section-trigger" data-section="solicitudes"><i class="material-icons left">people</i>Solicitudes</a></li>
+        <li><a href="#!" class="waves-effect dd-section-trigger" data-section="contratados"><i class="material-icons left">handshake</i>Contratados</a></li>
+        <li><a href="#!" class="waves-effect dd-section-trigger" data-section="chat"><i class="material-icons left">chat</i>Chat</a></li>
+        <li><a href="#!" class="waves-effect dd-section-trigger" data-section="finanzas"><i class="material-icons left">account_balance</i>Nómina</a></li>
+        <li><a class="dropdown-trigger waves-effect" href="#!" data-target="user-menu">
+          <i class="material-icons left">person</i>
+          <span class="username-text" id="navUsername">Usuario</span>
+          <i class="material-icons right">arrow_drop_down</i>
+        </a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <ul id="user-menu" class="dropdown-content user-dropdown">
+    <li class="dropdown-user-header">
+      <div class="dropdown-avatar" id="ddAvatar">LW</div>
+      <div class="dropdown-user-info">
+        <strong id="ddName">Usuario</strong>
+        <span id="ddEmail">email</span>
+        <span class="dropdown-role-badge" id="ddRole">empleador</span>
+      </div>
+    </li>
+    <li class="divider"></li>
+    <li><a href="#!"><i class="material-icons">account_circle</i>Mi Perfil</a></li>
+    <li><a href="#!"><i class="material-icons">settings</i>Configuración</a></li>
+    <li class="divider"></li>
+    <li><a href="#" id="logoutBtn"><i class="material-icons">exit_to_app</i>Cerrar Sesión</a></li>
+  </ul>
+
+  <ul class="sidenav" id="mobile-nav">
+    <li class="sidenav-header">
+      <span class="logo-icon" style="width:32px;height:32px;background:linear-gradient(135deg,var(--accent),var(--accent-light));border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:white;">LW</span>
+      LinkWork
+    </li>
+    <li><a href="#!" class="nav-active dd-section-trigger" data-section="publicar"><i class="material-icons">add_circle</i>Publicar</a></li>
+    <li><a href="#!" class="dd-section-trigger" data-section="misempleos"><i class="material-icons">work</i>Mis Empleos</a></li>
+    <li><a href="#!" class="dd-section-trigger" data-section="solicitudes"><i class="material-icons">people</i>Solicitudes</a></li>
+    <li><a href="#!" class="dd-section-trigger" data-section="contratados"><i class="material-icons">handshake</i>Contratados</a></li>
+    <li><a href="#!" class="dd-section-trigger" data-section="chat"><i class="material-icons">chat</i>Chat</a></li>
+    <li><a href="#!" class="dd-section-trigger" data-section="finanzas"><i class="material-icons">account_balance</i>Nómina</a></li>
+    <li class="divider"></li>
+    <li><a href="#!" id="mobileLogout"><i class="material-icons">exit_to_app</i>Cerrar Sesión</a></li>
+  </ul>
+
+  <main>
+    <div class="container">
+      <!-- SECTION: PUBLICAR -->
+      <div id="sec-publicar" class="section-content">
+        <h4 class="section-title"><i class="material-icons">add_circle</i>Publicar Empleo</h4>
+        <div class="card">
+          <div class="card-content">
+            <form id="jobForm">
+              <div class="input-field">
+                <i class="material-icons prefix">work</i>
+                <input type="text" id="jobTitle" required>
+                <label for="jobTitle">Título del puesto</label>
+              </div>
+              <div class="input-field">
+                <i class="material-icons prefix">business</i>
+                <input type="text" id="jobCompany" required>
+                <label for="jobCompany">Empresa</label>
+              </div>
+              <div class="input-field">
+                <i class="material-icons prefix">location_on</i>
+                <input type="text" id="jobLocation" required>
+                <label for="jobLocation">Ubicación</label>
+              </div>
+              <div class="input-field">
+                <i class="material-icons prefix">attach_money</i>
+                <input type="text" id="jobSalary">
+                <label for="jobSalary">Salario (opcional)</label>
+              </div>
+              <div class="input-field">
+                <select id="jobTipo">
+                  <option value="fijo">Fijo</option>
+                  <option value="hora">Por Hora</option>
+                </select>
+                <label>Tipo de contratación</label>
+              </div>
+              <div class="input-field" id="jobHorasField" style="display:none;">
+                <i class="material-icons prefix">schedule</i>
+                <input type="number" id="jobHoras" min="1">
+                <label for="jobHoras">Horas por semana</label>
+              </div>
+              <div class="input-field">
+                <i class="material-icons prefix">description</i>
+                <textarea id="jobDescription" class="materialize-textarea" required></textarea>
+                <label for="jobDescription">Descripción del puesto</label>
+              </div>
+
+              <div class="img-upload-area" id="uploadArea">
+                <i class="material-icons">add_photo_alternate</i>
+                <p>Haz clic para subir una imagen del puesto</p>
+                <img id="uploadPreview" class="preview" style="display:none;">
+              </div>
+              <input type="file" id="fileInput" accept="image/*" style="display:none;">
+              <input type="hidden" id="jobImagen">
+
+              <button type="submit" class="btn waves-effect waves-light blue darken-2 full-width" style="margin-top:16px;">
+                <i class="material-icons left">send</i>
+                Publicar Empleo
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION: MIS EMPLEOS -->
+      <div id="sec-misempleos" class="section-content" style="display:none;">
+        <div class="explore-header">
+          <div>
+            <h4 class="section-title" style="margin:0;"><i class="material-icons">list_alt</i>Mis Empleos</h4>
+            <p style="color:var(--text-muted);margin:5px 0 0 0;font-size:14px;">Gestiona tus ofertas laborales publicadas</p>
+          </div>
+          <span class="badge-count" id="myJobCount">0</span>
+        </div>
+        <div id="myJobs"></div>
+      </div>
+
+      <!-- SECTION: SOLICITUDES -->
+      <div id="sec-solicitudes" class="section-content" style="display:none;">
+        <div class="explore-header">
+          <div>
+            <h4 class="section-title" style="margin:0;"><i class="material-icons">inbox</i>Solicitudes Recibidas</h4>
+            <p style="color:var(--text-muted);margin:5px 0 0 0;font-size:14px;">Candidatos que han aplicado a tus empleos</p>
+          </div>
+          <span class="badge-count" id="solicitudesCount">0</span>
+        </div>
+        <div id="solicitudesList"></div>
+      </div>
+
+      <!-- SECTION: CONTRATADOS -->
+      <div id="sec-contratados" class="section-content" style="display:none;">
+        <div class="explore-header">
+          <div>
+            <h4 class="section-title" style="margin:0;"><i class="material-icons">handshake</i>Contratados</h4>
+            <p style="color:var(--text-muted);margin:5px 0 0 0;font-size:14px;">Trabajadores contratados para tus empleos</p>
+          </div>
+          <span class="badge-count" id="contratadosCount">0</span>
+        </div>
+        <div id="contratadosList"></div>
+      </div>
+
+      <!-- SECTION: NÓMINA -->
+      <div id="sec-finanzas" class="section-content" style="display:none;">
+        <h4 class="section-title"><i class="material-icons">account_balance</i>Nómina</h4>
+
+        <div class="row" style="margin-bottom:10px;">
+          <div class="col s12 m4">
+            <div class="input-field">
+              <select id="finYear"></select>
+              <label>Año</label>
+            </div>
+          </div>
+          <div class="col s12 m4">
+            <div class="input-field">
+              <select id="finMonth">
+                <option value="1">Enero</option>
+                <option value="2">Febrero</option>
+                <option value="3">Marzo</option>
+                <option value="4">Abril</option>
+                <option value="5">Mayo</option>
+                <option value="6">Junio</option>
+                <option value="7">Julio</option>
+                <option value="8">Agosto</option>
+                <option value="9">Septiembre</option>
+                <option value="10">Octubre</option>
+                <option value="11">Noviembre</option>
+                <option value="12">Diciembre</option>
+              </select>
+              <label>Mes</label>
+            </div>
+          </div>
+          <div class="col s12 m4" style="display:flex;align-items:flex-end;padding-bottom:16px;">
+            <button class="btn blue darken-2" id="finFilterBtn"><i class="material-icons left">search</i>Filtrar</button>
+          </div>
+        </div>
+
+        <div class="row" id="finResumen" style="display:none;">
+          <div class="col s12 m4">
+            <div class="card stat-card green-gradient"><div class="card-content center-align"><i class="material-icons large">arrow_upward</i><h5 id="finIngresos">$0</h5><p>Ingresos</p></div></div>
+          </div>
+          <div class="col s12 m4">
+            <div class="card stat-card orange-gradient"><div class="card-content center-align"><i class="material-icons large">arrow_downward</i><h5 id="finEgresos">$0</h5><p>Egresos</p></div></div>
+          </div>
+          <div class="col s12 m4">
+            <div class="card stat-card blue-gradient"><div class="card-content center-align"><i class="material-icons large">account_balance_wallet</i><h5 id="finBalance">$0</h5><p>Balance</p></div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title"><i class="material-icons">receipt_long</i>Movimientos</span>
+            <div style="overflow-x:auto;">
+              <table class="finance-table" id="finTable">
+                <thead><tr><th>Fecha</th><th>Categoría</th><th>Concepto</th><th>Tipo</th><th>Monto</th></tr></thead>
+                <tbody id="finTableBody"></tbody>
+              </table>
+            </div>
+            <div id="finTableEmpty" class="empty-state" style="display:none;margin:0;">
+              <i class="material-icons empty-icon">receipt_long</i>
+              <h5>Sin movimientos</h5>
+              <p>No hay movimientos financieros registrados en este período.</p>
+            </div>
+          </div>
+        </div>
+
+        </div>
+
+      <!-- SECTION: CHAT -->
+      <div id="sec-chat" class="section-content" style="display:none;">
+        <div class="explore-header">
+          <div>
+            <h4 class="section-title" style="margin:0;"><i class="material-icons">chat</i>Mensajes</h4>
+            <p style="color:var(--text-muted);margin:5px 0 0 0;font-size:14px;">Conversaciones con trabajadores y proveedores</p>
+          </div>
+        </div>
+        <div id="chatContainer">
+          <div id="conversationsList"></div>
+          <div id="chatThread" style="display:none;">
+            <div id="chatThreadHeader" style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+              <button id="chatBackBtn" class="btn-flat" style="padding:0 8px;"><i class="material-icons">arrow_back</i></button>
+              <h5 id="chatThreadTitle" style="margin:0;font-weight:600;font-size:16px;"></h5>
+            </div>
+            <div id="chatMessages" class="chat-box"></div>
+            <form id="chatForm" style="display:flex;gap:8px;margin-top:12px;">
+              <div class="input-field" style="flex:1;margin:0;">
+                <input type="text" id="chatInput" placeholder="Escribe un mensaje..." required>
+              </div>
+              <button type="submit" class="btn blue darken-2" style="height:44px;min-width:44px;padding:0 16px;">
+                <i class="material-icons">send</i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../Login/js/api.js"></script>
+  <script src="js/nav.js"></script>
+  <script>
+    function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+    LW.upload = (file) => {
+      const fd = new FormData();
+      fd.append('file', file);
+      return api('POST', '/upload', fd).then(d => d.url);
+    };
+
+    document.addEventListener('DOMContentLoaded', async function () {
+      let user;
+      try { user = await LW.me(); } catch (_) { window.location.href = '../Login/index.html'; return; }
+      if (user.role !== 'empleador') { window.location.href = '../Login/index.html'; return; }
+
+      document.getElementById('ddName').textContent = user.username;
+      document.getElementById('ddEmail').textContent = user.email;
+      document.getElementById('ddRole').textContent = user.role;
+      const initials = (user.username || 'U').substring(0, 2).toUpperCase();
+      document.getElementById('ddAvatar').textContent = initials;
+      document.getElementById('navUsername').textContent = user.username;
+
+      let currentChat = { tipo: null, refId: null, convId: null, otroNombre: null, otroEmail: null, otroId: null };
+
+      document.querySelectorAll('.dd-section-trigger').forEach(btn => {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          const section = this.dataset.section;
+          document.querySelectorAll('#nav-mobile li a').forEach(a => a.classList.remove('nav-active'));
+          document.querySelectorAll('.sidenav li a').forEach(a => a.classList.remove('nav-active'));
+          this.classList.add('nav-active');
+          document.querySelectorAll('.section-content').forEach(s => s.style.display = 'none');
+          document.getElementById('sec-' + section).style.display = 'block';
+          switch (section) {
+            case 'misempleos': renderMisEmpleos(); break;
+            case 'solicitudes': renderSolicitudes(); break;
+            case 'contratados': renderContratados(); break;
+            case 'chat': renderConversaciones(); break;
+            case 'finanzas': renderFinanzas(); break;
+          }
+          const sidenavInstance = M.Sidenav.getInstance(document.getElementById('mobile-nav'));
+          if (sidenavInstance) sidenavInstance.close();
+        });
+      });
+
+      M.FormSelect.init(document.querySelectorAll('select'));
+
+      document.getElementById('jobTipo').addEventListener('change', function () {
+        document.getElementById('jobHorasField').style.display = this.value === 'hora' ? 'block' : 'none';
+      });
+
+      document.getElementById('uploadArea').addEventListener('click', function () {
+        document.getElementById('fileInput').click();
+      });
+
+      document.getElementById('fileInput').addEventListener('change', async function (e) {
+        const file = e.target.files[0];
+        if (!file) return;
+        try {
+          const url = await LW.upload(file);
+          document.getElementById('jobImagen').value = url;
+          const preview = document.getElementById('uploadPreview');
+          preview.src = url;
+          preview.style.display = 'block';
+          document.querySelector('#uploadArea p').textContent = 'Imagen seleccionada';
+        } catch (err) {
+          swalErr(err);
+        }
+      });
+
+      document.getElementById('jobForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const data = {
+          title: document.getElementById('jobTitle').value,
+          company: document.getElementById('jobCompany').value,
+          location: document.getElementById('jobLocation').value,
+          salary: document.getElementById('jobSalary').value,
+          description: document.getElementById('jobDescription').value,
+          tipo: document.getElementById('jobTipo').value,
+          horas: document.getElementById('jobTipo').value === 'hora' ? document.getElementById('jobHoras').value : null,
+          imagen: document.getElementById('jobImagen').value || null
+        };
+        try {
+          await LW.crearEmpleo(data);
+          this.reset();
+          document.getElementById('jobHorasField').style.display = 'none';
+          document.getElementById('uploadPreview').style.display = 'none';
+          document.querySelector('#uploadArea p').textContent = 'Haz clic para subir una imagen del puesto';
+          document.getElementById('jobImagen').value = '';
+          M.updateTextFields();
+          M.FormSelect.init(document.querySelectorAll('select'));
+          swalOk('Empleo publicado');
+        } catch (err) {
+          swalErr(err);
+        }
+      });
+
+      // Chat event listeners
+      document.getElementById('chatForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const msg = document.getElementById('chatInput').value.trim();
+        if (!msg) return;
+        try {
+          const msgPayload = {
+            tipo_ref: currentChat.tipo,
+            ref_id: currentChat.refId,
+            mensaje: msg
+          };
+          if (currentChat.otroId) {
+            msgPayload.destinatario_id = currentChat.otroId;
+            msgPayload.destinatario_nombre = currentChat.otroNombre;
+          } else if (currentChat.otroEmail) {
+            msgPayload.destinatario_email = currentChat.otroEmail;
+            msgPayload.destinatario_nombre = currentChat.otroNombre;
+          }
+          await LW.enviarMensaje(msgPayload);
+          document.getElementById('chatInput').value = '';
+          loadChatThread(currentChat.tipo, currentChat.refId);
+        } catch (err) {
+          Swal.fire({ icon: 'error', iconColor: '#EF4444', title: 'Error', text: err.message, background: '#FFFFFF', color: '#1E293B', confirmButtonColor: '#2563EB', padding: '24px' });
+        }
+      });
+
+      document.getElementById('chatBackBtn').addEventListener('click', function () {
+        document.getElementById('chatThread').style.display = 'none';
+        document.getElementById('conversationsList').style.display = 'block';
+      });
+
+      async function renderMisEmpleos() {
+        const container = document.getElementById('myJobs');
+        try {
+          const jobs = await LW.misEmpleos();
+          document.getElementById('myJobCount').textContent = jobs.length;
+          if (jobs.length === 0) {
+            container.innerHTML = '<div class="empty-state"><i class="material-icons empty-icon">work_off</i><h5>Sin empleos</h5><p>Aún no has publicado ningún empleo.</p></div>';
+            return;
+          }
+          container.innerHTML = jobs.map(j => {
+            const isHourly = j.tipo === 'hora';
+            return '<div class="listing-card">' +
+              '<div class="listing-badge jobs">Empleo</div>' +
+              (j.imagen ? '<div class="listing-img"><img src="' + esc(j.imagen) + '" alt="' + esc(j.title) + '"></div>' : '') +
+              '<div class="listing-content">' +
+                '<div class="listing-header">' +
+                  '<h3>' + esc(j.title) + '</h3>' +
+                  '<span class="listing-company">' + esc(j.company) + '</span>' +
+                '</div>' +
+                '<div class="listing-details">' +
+                  '<span><i class="material-icons">location_on</i> ' + esc(j.location) + '</span>' +
+                  (j.salary ? '<span><i class="material-icons">attach_money</i> $' + esc(j.salary) + '</span>' : '') +
+                  (j.tipo ? '<span class="status-badge ' + (isHourly ? 'pendiente' : 'aceptado') + '">' + (isHourly ? 'Por Hora' : 'Fijo') + '</span>' : '') +
+                  (isHourly && j.horas ? '<span><i class="material-icons">schedule</i> ' + j.horas + 'h/sem</span>' : '') +
+                '</div>' +
+                '<p class="listing-desc">' + esc(j.description) + '</p>' +
+              '</div>' +
+              '<div class="listing-action">' +
+                '<button class="btn-listing-sm delete-job-btn" data-id="' + j.id + '" style="color:var(--accent2);border-color:var(--accent2);">' +
+                  '<i class="material-icons" style="font-size:14px;">delete</i> Eliminar' +
+                '</button>' +
+              '</div>' +
+            '</div>';
+          }).join('');
+          document.querySelectorAll('#myJobs .delete-job-btn').forEach(btn => {
+            btn.addEventListener('click', async function () {
+              try {
+                await LW.deleteEmpleo(this.dataset.id);
+                swalOk('Empleo eliminado');
+                renderMisEmpleos();
+              } catch (err) { swalErr(err); }
+            });
+          });
+        } catch (err) {
+          container.innerHTML = '<div class="empty-state"><i class="material-icons empty-icon">error</i><h5>Error</h5><p>' + esc(err.message) + '</p></div>';
+        }
+      }
+
+      async function renderSolicitudes() {
+        const container = document.getElementById('solicitudesList');
+        try {
+          const apps = await LW.aplicacionesRecibidas();
+          const empleos = apps.filter(a => a.tipo === 'empleo' && a.status === 'pendiente');
+          document.getElementById('solicitudesCount').textContent = empleos.length;
+          if (empleos.length === 0) {
+            container.innerHTML = '<div class="empty-state"><i class="material-icons empty-icon">inbox</i><h5>Sin solicitudes</h5><p>No has recibido solicitudes para tus empleos aún.</p></div>';
+            return;
+          }
+          container.innerHTML = empleos.map(a => {
+            return '<div class="listing-card">' +
+              '<div class="listing-badge jobs">Empleo</div>' +
+              '<div class="listing-content">' +
+                '<div class="listing-header">' +
+                  '<h3>' + esc(a.solicitante_nombre || 'Anónimo') + '</h3>' +
+                  (a.ref_titulo ? '<span class="listing-company">' + esc(a.ref_titulo) + '</span>' : '') +
+                '</div>' +
+                (a.mensaje ? '<p class="listing-desc" style="-webkit-line-clamp:3;"><strong>Mensaje:</strong> ' + esc(a.mensaje) + '</p>' : '') +
+              '</div>' +
+              '<div class="listing-action">' +
+                '<button class="btn-listing chat-sol-btn" data-tipo="empleo" data-refid="' + a.ref_id + '" data-reftitulo="' + esc(a.ref_titulo || '') + '" data-email="' + esc(a.solicitante_email || '') + '" data-username="' + esc(a.solicitante_nombre || '') + '" style="background:var(--accent);">' +
+                  '<i class="material-icons">chat</i> Chat' +
+                '</button>' +
+                '<button class="btn-listing accept-btn" data-id="' + a.id + '" data-nombre="' + esc(a.solicitante_nombre) + '" data-email="' + esc(a.solicitante_email || '') + '" data-refid="' + a.ref_id + '" data-reftitulo="' + esc(a.ref_titulo || '') + '" style="background:var(--success);">' +
+                  '<i class="material-icons">check</i> Aceptar' +
+                '</button>' +
+                '<button class="btn-listing-sm reject-btn" data-id="' + a.id + '" style="color:var(--accent2);border-color:var(--accent2);">' +
+                  '<i class="material-icons" style="font-size:14px;">close</i> Rechazar' +
+                '</button>' +
+              '</div>' +
+            '</div>';
+          }).join('');
+          document.querySelectorAll('#solicitudesList .accept-btn').forEach(btn => {
+            btn.addEventListener('click', async function () {
+              const id = this.dataset.id;
+              const nombre = this.dataset.nombre;
+              const email = this.dataset.email;
+              const refId = this.dataset.refid;
+              const refTitulo = this.dataset.reftitulo;
+              const { value: monto } = await Swal.fire({
+                title: 'Crear Contrato',
+                text: 'Ingresa el monto del contrato para ' + nombre,
+                input: 'number',
+                inputPlaceholder: 'Monto del contrato',
+                inputAttributes: { min: '0.01', step: '0.01' },
+                showCancelButton: true,
+                confirmButtonText: 'Crear',
+                cancelButtonText: 'Cancelar',
+                confirmButtonColor: '#10B981',
+                cancelButtonColor: '#94A3B8',
+                inputValidator: v => { if (!v || parseFloat(v) <= 0) return 'Ingresa un monto válido'; },
+                background: '#FFFFFF', color: '#1E293B', padding: '24px', reverseButtons: true
+              });
+              if (!monto) return;
+              try {
+                await LW.cambiarEstadoAplicacion(id, 'aceptado');
+                await LW.crearContrato({
+                  trabajador_id: null,
+                  trabajador_nombre: nombre,
+                  trabajador_email: email,
+                  tipo: 'empleo',
+                  ref_id: refId,
+                  ref_titulo: refTitulo,
+                  monto: parseFloat(monto)
+                });
+                await LW.crearFinanza({
+                  tipo: 'ingreso',
+                  categoria: 'salario',
+                  concepto: refTitulo || 'Contrato de empleo',
+                  monto: parseFloat(monto)
+                });
+                swalOk('Contrato creado exitosamente');
+                renderSolicitudes();
+              } catch (err) { swalErr(err); }
+            });
+          });
+          document.querySelectorAll('#solicitudesList .reject-btn').forEach(btn => {
+            btn.addEventListener('click', async function () {
+              try {
+                await LW.cambiarEstadoAplicacion(this.dataset.id, 'rechazado');
+                swalOk('Solicitud rechazada');
+                renderSolicitudes();
+              } catch (err) { swalErr(err); }
+            });
+          });
+          document.querySelectorAll('#solicitudesList .chat-sol-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+              openChatTab(this.dataset.tipo, this.dataset.refid, this.dataset.reftitulo, this.dataset.email, this.dataset.username);
+            });
+          });
+        } catch (err) {
+          container.innerHTML = '<div class="empty-state"><i class="material-icons empty-icon">error</i><h5>Error</h5><p>' + esc(err.message) + '</p></div>';
+        }
+      }
+
+      async function renderContratados() {
+        const container = document.getElementById('contratadosList');
+        try {
+          const contratos = await LW.misContratos();
+          const filtered = contratos.filter(c => c.empleador_email === user.email);
+          document.getElementById('contratadosCount').textContent = filtered.length;
+          if (filtered.length === 0) {
+            container.innerHTML = '<div class="empty-state"><i class="material-icons empty-icon">handshake</i><h5>Sin contratos</h5><p>Aún no has contratado a nadie.</p></div>';
+            return;
+          }
+          container.innerHTML = filtered.map(c => {
+            const st = c.status || 'activo';
+            const stText = st === 'finalizado' ? 'Finalizado' : 'Activo';
+            return '<div class="listing-card">' +
+              '<div class="listing-badge jobs">Contrato</div>' +
+              '<div class="listing-content">' +
+                '<div class="listing-header">' +
+                  '<h3>' + esc(c.trabajador_nombre || 'Trabajador') + '</h3>' +
+                  (c.ref_titulo ? '<span class="listing-company">' + esc(c.ref_titulo) + '</span>' : '') +
+                '</div>' +
+                '<div class="listing-details">' +
+                  (c.monto ? '<span><i class="material-icons">attach_money</i> $' + esc(String(c.monto)) + '</span>' : '') +
+                  (c.horas ? '<span><i class="material-icons">schedule</i> ' + c.horas + 'h</span>' : '') +
+                  '<span class="status-badge ' + st + '">' + stText + '</span>' +
+                '</div>' +
+              '</div>' +
+              (st === 'activo' ? '<div class="listing-action">' +
+                '<button class="btn-listing finalizar-btn" data-id="' + c.id + '" style="background:var(--warning);">' +
+                  '<i class="material-icons">check_circle</i> Finalizar' +
+                '</button>' +
+              '</div>' : '') +
+            '</div>';
+          }).join('');
+          document.querySelectorAll('#contratadosList .finalizar-btn').forEach(btn => {
+            btn.addEventListener('click', async function () {
+              const r = await Swal.fire({
+                icon: 'question', iconColor: '#F59E0B', title: '¿Finalizar contrato?',
+                text: 'Esta acción marcará el contrato como finalizado.',
+                showCancelButton: true, confirmButtonText: 'Finalizar', cancelButtonText: 'Cancelar',
+                confirmButtonColor: '#F59E0B', cancelButtonColor: '#94A3B8',
+                background: '#FFFFFF', color: '#1E293B', padding: '24px', reverseButtons: true
+              });
+              if (!r.isConfirmed) return;
+              try {
+                await LW.finalizarContrato(this.dataset.id);
+                swalOk('Contrato finalizado');
+                renderContratados();
+              } catch (err) { swalErr(err); }
+            });
+          });
+        } catch (err) {
+          container.innerHTML = '<div class="empty-state"><i class="material-icons empty-icon">error</i><h5>Error</h5><p>' + esc(err.message) + '</p></div>';
+        }
+      }
+
+      let currentFinYear = new Date().getFullYear();
+      let currentFinMonth = new Date().getMonth() + 1;
+
+      (function initFinYearSelect() {
+        const sel = document.getElementById('finYear');
+        const y = new Date().getFullYear();
+        for (let i = y - 5; i <= y + 2; i++) {
+          const opt = document.createElement('option');
+          opt.value = i;
+          opt.textContent = i;
+          if (i === y) opt.selected = true;
+          sel.appendChild(opt);
+        }
+        M.FormSelect.init(sel);
+      })();
+
+      document.getElementById('finFilterBtn').addEventListener('click', function () {
+        currentFinYear = parseInt(document.getElementById('finYear').value);
+        currentFinMonth = parseInt(document.getElementById('finMonth').value);
+        renderFinanzasData(currentFinYear, currentFinMonth);
+      });
+
+      async function renderFinanzas() {
+        renderFinanzasData(currentFinYear, currentFinMonth);
+      }
+
+      async function renderFinanzasData(year, month) {
+        try {
+          const resumen = await LW.resumenFinanzas(year, month);
+          document.getElementById('finIngresos').textContent = '$' + (resumen.ingresos || 0);
+          document.getElementById('finEgresos').textContent = '$' + (resumen.egresos || 0);
+          document.getElementById('finBalance').textContent = '$' + (resumen.balance || 0);
+          document.getElementById('finResumen').style.display = 'flex';
+        } catch (_) { document.getElementById('finResumen').style.display = 'none'; }
+
+        try {
+          const items = await LW.getFinanzas(year, month);
+          const tbody = document.getElementById('finTableBody');
+          const empty = document.getElementById('finTableEmpty');
+          if (!items || items.length === 0) {
+            tbody.innerHTML = '';
+            empty.style.display = 'block';
+            return;
+          }
+          empty.style.display = 'none';
+          tbody.innerHTML = items.map(item => {
+            const tipoClass = item.tipo === 'ingreso' ? 'ingreso' : 'egreso';
+            return '<tr>' +
+              '<td>' + esc(item.fecha || '') + '</td>' +
+              '<td>' + esc(item.categoria || '') + '</td>' +
+              '<td>' + esc(item.concepto || '') + '</td>' +
+              '<td><span class="' + tipoClass + '">' + esc(item.tipo || '') + '</span></td>' +
+              '<td class="' + tipoClass + '">$' + (item.monto || 0) + '</td>' +
+            '</tr>';
+          }).join('');
+        } catch (_) {}
+      }
+
+      // ========== CHAT ==========
+      function openChatTab(tipo, refId, titulo, ownerEmail, ownerName) {
+        currentChat.otroEmail = ownerEmail || null;
+        currentChat.otroNombre = ownerName || null;
+        currentChat.otroId = null;
+        document.querySelectorAll('#nav-mobile li a').forEach(a => a.classList.remove('nav-active'));
+        document.querySelectorAll('.sidenav li a').forEach(a => a.classList.remove('nav-active'));
+        document.querySelectorAll('.section-content').forEach(s => s.style.display = 'none');
+        document.getElementById('sec-chat').style.display = 'block';
+        renderCurrentSection = 'chat';
+        renderConversaciones().then(() => loadChatThread(tipo, refId));
+      }
+
+      async function renderConversaciones() {
+        const container = document.getElementById('conversationsList');
+        container.style.display = 'block';
+        document.getElementById('chatThread').style.display = 'none';
+        try {
+          const convs = await LW.conversaciones();
+          if (convs.length === 0) {
+            container.innerHTML = '<div class="empty-state"><i class="material-icons empty-icon">chat</i><h5>Sin conversaciones</h5><p>No tienes mensajes aún. Inicia contacto desde un empleo o servicio.</p></div>';
+            return;
+          }
+          container.innerHTML = '<div class="collection" style="margin:0;">' +
+            convs.map(c => {
+              const tipoClass = c.tipo === 'servicio' ? 'services' : 'jobs';
+              return '<div class="collection-item avatar conv-item" style="cursor:pointer;" data-tipo="' + c.tipo + '" data-refid="' + c.ref_id + '" data-otro="' + esc(c.otro_nombre) + '" data-otroid="' + (c.otro_id || '') + '" data-convid="' + (c.id || '') + '">' +
+                '<i class="material-icons circle" style="background:' + (c.tipo === 'servicio' ? 'linear-gradient(135deg,var(--success),#34D399)' : 'linear-gradient(135deg,var(--accent),var(--accent-light))') + ';">' + (c.tipo === 'servicio' ? 'build' : 'work') + '</i>' +
+                '<span class="title">' + esc(c.otro_nombre) + '</span>' +
+                '<p>' +
+                  '<span class="status-badge ' + tipoClass + '" style="font-size:10px;padding:1px 6px;color:white;border:none;">' + (c.tipo === 'servicio' ? 'Servicio' : 'Empleo') + '</span> ' +
+                  (c.ref_titulo ? esc(c.ref_titulo) + '<br>' : '') +
+                  (c.last_message ? esc(c.last_message.substring(0, 60)) + (c.last_message.length > 60 ? '...' : '') : '') +
+                '</p>' +
+                (c.unread > 0 ? '<span class="badge" style="background:var(--accent);color:white;border-radius:50px;font-size:11px;min-width:22px;height:22px;line-height:22px;text-align:center;float:right;margin-top:8px;">' + c.unread + '</span>' : '') +
+              '</div>';
+            }).join('') +
+          '</div>';
+          document.querySelectorAll('.conv-item').forEach(item => {
+            item.addEventListener('click', function () {
+              const tipo = this.dataset.tipo;
+              const refId = this.dataset.refid;
+              const otroNombre = this.dataset.otro;
+              currentChat.otroNombre = otroNombre;
+              currentChat.otroId = this.dataset.otroid;
+              currentChat.convId = this.dataset.convid;
+              loadChatThread(tipo, refId);
+            });
+          });
+        } catch (err) {
+          container.innerHTML = '<div class="empty-state"><i class="material-icons empty-icon">error</i><h5>Error al cargar</h5><p>' + esc(err.message) + '</p></div>';
+        }
+      }
+
+      async function loadChatThread(tipo, refId) {
+        currentChat.tipo = tipo;
+        currentChat.refId = refId;
+        document.getElementById('conversationsList').style.display = 'none';
+        document.getElementById('chatThread').style.display = 'block';
+        document.getElementById('chatThreadTitle').textContent = 'Chat';
+        const msgsContainer = document.getElementById('chatMessages');
+        msgsContainer.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:20px;"><i class="material-icons">hourglass_empty</i> Cargando mensajes...</div>';
+        try {
+          const msgs = await LW.getMensajes(tipo, refId);
+          if (msgs.length === 0) {
+            msgsContainer.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:20px;">No hay mensajes aún. Envía el primero.</div>';
+          } else {
+            msgsContainer.innerHTML = msgs.map(m => {
+              const isMine = m.es_mio || m.remitente_id === user.id;
+              return '<div class="chat-msg ' + (isMine ? 'mine' : 'theirs') + '">' +
+                (m.remitente ? '<div class="msg-author">' + esc(m.remitente) + '</div>' : '') +
+                '<div>' + esc(m.mensaje) + '</div>' +
+                (m.created_at ? '<div class="msg-time">' + m.created_at + '</div>' : '') +
+              '</div>';
+            }).join('');
+            msgsContainer.scrollTop = msgsContainer.scrollHeight;
+          }
+          if (currentChat.convId) {
+            try { await LW.marcarLeido(currentChat.convId); } catch (_) {}
+          }
+        } catch (err) {
+          msgsContainer.innerHTML = '<div style="text-align:center;color:var(--accent2);padding:20px;">Error: ' + esc(err.message) + '</div>';
+        }
+      }
+
+      renderMisEmpleos();
+    });
+  </script>
+</body>
+</html>
