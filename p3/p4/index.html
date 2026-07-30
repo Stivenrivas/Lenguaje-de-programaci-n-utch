@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventas del Mercado de Quibdó | Proyecto base</title>
+    <link rel="icon" href="img/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="favicon/favicon-32x32.png" type="image/x-icon">
+</head>
+
+<body>
+
+<!-- Señores o Jovenes pues  lo que hemos construidio esta en  HTML y CSS, como cuando en el mercado cada puesto tiene su propio lugar y cada producto se organiza en su canasto o ponchera pues jeje. -->
+
+    <header class="encabezado">
+        <div class="marca">
+            <span class="logo">UTCH</span>
+            <div>
+                <p class="institucion">Universidad Tecnológica del Chocó</p>
+                <h1>Ventas del Mercado de Quibdó</h1>
+            </div>
+        </div>
+        <p class="subtitulo">
+            Cultura, economía local, biodiversidad y tradición comercial del pueblo chocoano.
+        </p>
+    </header>
+
+    <!-- En los input radio funcionan como la elección de una venta:
+        cuando escoges una pestaña, esa sección queda visible y las demás descansan en teoria.-->
+    <input type="radio" name="tabs" id="tab-inicio" checked>
+    <input type="radio" name="tabs" id="tab-productos">
+    <input type="radio" name="tabs" id="tab-vendedores">
+    <input type="radio" name="tabs" id="tab-galeria">
+    <input type="radio" name="tabs" id="tab-contacto">
+
+    <nav class="menu-superior">
+        <div class="contenedor-menu">
+            <label for="tab-inicio">Inicio</label>
+            <label for="tab-productos">Productos</label>
+            <label for="tab-vendedores">Vendedores</label>
+            <label for="tab-galeria">Galería</label>
+            <label for="tab-contacto">Contacto</label>
+        </div>
+    </nav>
+
+    <main>
+
+        <section class="tab seccion-inicio">
+            <div class="hero">
+                <div class="hero-texto">
+                    <span class="etiqueta">Proyecto HTML5 + CSS3</span>
+                    <h2>Un recorrido chavere y visual por el mercado tradicional de Quibdó</h2>
+                    <p>
+                        Este sitio presenta las ventas del mercado como un espacio de encuentro,aprendizaje, comercio popular y memoria cultural. Cada pestaña funciona con la arquitectura “Solo CSS”.
+                    </p>
+                </div>
+
+                <div class="carrusel">
+                    <!-- 
+                        El carrusel es como el río Atrato: avanza con ritmo propio.
+                        Aquí @keyframes empuja las imágenes una tras otra.
+                    -->
+                    <div class="slides">
+                        <img src="img/mercado1.avif" alt="Venta de frutas en el mercado de Quibdó">
+                        <img src="img/mercado2.jpg" alt="Frutas y productos agrícolas del Chocó">
+                        <img src="img/mercado3.jpg" alt="Puesto tradicional del mercado">
+                    </div>
+                </div>
+            </div>
+
+            <div class="tarjetas">
+                <article>
+                    <h3>Identidad local</h3>
+                    <p>Reconoce el valor cultural de las ventas tradicionales y del trabajo comunitario.</p>
+                </article>
+                <article>
+                    <h3>Aprendizaje web</h3>
+                    <p>Permite practicar HTML semántico, CSS responsive, tabs y animaciones.</p>
+                </article>
+                <article>
+                    <h3>Diseño institucional</h3>
+                    <p>Usa una estética limpia, universitaria, verde selva y dorado cálido.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="tab seccion-productos">
+            <h2>Productos representativos</h2>
+            <p class="intro">
+                En el mercado se encuentran productos frescos que conectan el campo,
+                el río y la cocina tradicional chocoana.
+            </p>
+
+            <div class="grid-productos">
+                <article>
+                    <h3>Plátano</h3>
+                    <p>Base de muchas preparaciones locales y símbolo de abundancia alimentaria.</p>
+                </article>
+                <article>
+                    <h3>Frutas tropicales</h3>
+                    <p>Mango, piña, papaya, borojó y otros sabores propios del territorio.</p>
+                </article>
+                <article>
+                    <h3>Cacao</h3>
+                    <p>Producto agrícola con valor cultural, gastronómico y económico.</p>
+                </article>
+                <article>
+                    <h3>Tubérculos</h3>
+                    <p>Yuca, ñame y otros alimentos que fortalecen la seguridad alimentaria.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="tab seccion-vendedores">
+            <h2>Vendedores y tradición</h2>
+            <div class="bloque-doble">
+                <img src="img/mercado4.webp" alt="Vendedores en el mercado de Quibdó">
+                <div>
+                    <p>
+                        Las vendedoras y vendedores del mercado son guardianes de saberes,
+                        rutas de abastecimiento, formas de atención y prácticas solidarias.
+                    </p>
+                    <p>
+                        Su trabajo sostiene la economía cotidiana y mantiene viva una parte
+                        fundamental de la identidad urbana de Quibdó.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="tab seccion-galeria">
+            <h2>Galería del mercado</h2>
+            <div class="galeria">
+                <img src="img/mercado5.jpg" alt="Puesto de frutas">
+                <img src="img/mercado6.jpg" alt="Productos agrícolas">
+                <img src="img/mercado7.jpg" alt="Ventas tradicionales">
+                <img src="img/mercado8.jpg" alt="Cacao y frutas del mercado">
+            </div>
+        </section>
+
+        <section class="tab seccion-contacto">
+            <h2>Información del proyecto</h2>
+            <div class="contacto">
+                <p><strong>Tema:</strong> Las ventas del mercado de Quibdó.</p>
+                <p><strong>Tecnologías:</strong> HTML5 y CSS3.</p>
+                <p><strong>Restricción:</strong> sitio desarrollado :).</p>
+                <p><strong>Propósito:</strong> enseñar diseño web con identidad territorial.</p>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer>
+        <p>© ..:::2026 |Ejercicio académico inspirado en el mercado de Quibdó|UTCH ::..</p>
+    </footer>
+
+</body>
+</html>

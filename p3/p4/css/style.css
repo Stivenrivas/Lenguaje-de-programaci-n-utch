@@ -1,0 +1,351 @@
+/* ESTILOS GENERALES */
+
+/*  Muchachos, este selector es como una dirección del barrio
+le dice al navegador exactamente a quién debe ponerle estilo 
+y ya, eso es todo :).
+*/
+* {
+box-sizing: border-box;
+}
+
+body {
+margin: 0;
+font-family: Cambria, Georgia, serif;
+background: #f6f3ea;
+color: #1f2933;
+line-height: 1.6;
+}
+
+/* Ahora bien vamos a Ocultar los radios, pero siguen trabajando por debajo,
+como quien organiza el mercado antes de que lleguen los compradores. */
+body > input[type="radio"] {
+display: none;
+}
+
+/* ENCABEZADO INSTITUCIONAL */
+
+.encabezado {
+background: linear-gradient(135deg, #0f3d2e, #1f6f43);
+color: #ffffff;
+padding: 32px 8%;
+border-bottom: 5px solid #d6a319;
+}
+
+.marca {
+display: flex;
+align-items: center;
+gap: 18px;
+}
+
+.logo {
+width: 74px;
+height: 74px;
+border-radius: 50%;
+background: #d6a319;
+color: #0f3d2e;
+display: grid;
+place-items: center;
+font-weight: bold;
+box-shadow: 0 8px 20px rgba(0,0,0,.25);
+}
+
+.institucion {
+margin: 0;
+letter-spacing: .08em;
+text-transform: uppercase;
+font-size: .85rem;
+color: #f4dc8c;
+}
+
+h1, h2, h3 {
+margin-top: 0;
+}
+
+h1 {
+margin-bottom: 6px;
+font-size: clamp(2rem, 4vw, 3.4rem);
+}
+
+.subtitulo {
+max-width: 850px;
+margin: 14px 0 0;
+font-size: 1.08rem;
+}
+
+/* MENÚ SUPERIOR FIJO PARA QUE NO DIGA QUE NO */
+
+.menu-superior {
+position: sticky;
+top: 0;
+z-index: 1000;
+background: rgba(15, 61, 46, .96);
+backdrop-filter: blur(8px);
+border-bottom: 1px solid rgba(214, 163, 25, .45);
+}
+
+/* Bueno tengamos presente que el z-index es 
+como poner una batea encima de otra:
+esta navegación queda arriba para 
+que no se pierda entre el contenido.
+*/
+
+.contenedor-menu {
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 8px;
+padding: 10px 5%;
+}
+
+.menu-superior label {
+color: white;
+padding: 12px 18px;
+border-radius: 999px;
+cursor: pointer;
+transition: background .3s ease, color .3s ease, transform .3s ease;
+}
+
+.menu-superior label:hover {
+background: #d6a319;
+color: #0f3d2e;
+transform: translateY(-2px);
+}
+
+/* Pestaña activa */
+#tab-inicio:checked ~ .menu-superior label[for="tab-inicio"],
+#tab-productos:checked ~ .menu-superior label[for="tab-productos"],
+#tab-vendedores:checked ~ .menu-superior label[for="tab-vendedores"],
+#tab-galeria:checked ~ .menu-superior label[for="tab-galeria"],
+#tab-contacto:checked ~ .menu-superior label[for="tab-contacto"] {
+background: #f4dc8c;
+color: #0f3d2e;
+font-weight: bold;
+}
+
+/* SECCIONES TIPO TABS */
+
+main {
+max-width: 1180px;
+margin: auto;
+padding: 34px 6%;
+}
+
+.tab {
+display: none;
+animation: aparecer .45s ease;
+}
+
+@keyframes aparecer {
+from { opacity: 0; transform: translateY(12px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+/* Aquí está la magia pues de Solo CSS
+si el radio está marcado, se muestra su sección si no ya saben.
+*/
+#tab-inicio:checked ~ main .seccion-inicio,
+#tab-productos:checked ~ main .seccion-productos,
+#tab-vendedores:checked ~ main .seccion-vendedores,
+#tab-galeria:checked ~ main .seccion-galeria,
+#tab-contacto:checked ~ main .seccion-contacto {
+display: block;
+}
+
+/* HERO Y CARRUSEL  */
+
+.hero {
+display: grid;
+grid-template-columns: 1fr 1.15fr;
+gap: 28px;
+align-items: center;
+}
+
+.hero-texto {
+background: white;
+padding: 32px;
+border-radius: 24px;
+box-shadow: 0 12px 35px rgba(15,61,46,.12);
+border-left: 6px solid #d6a319;
+}
+
+.etiqueta {
+color: #1f6f43;
+font-weight: bold;
+text-transform: uppercase;
+font-size: .82rem;
+letter-spacing: .08em;
+}
+
+.hero h2 {
+font-size: clamp(1.8rem, 3vw, 2.7rem);
+color: #0f3d2e;
+}
+
+.carrusel {
+overflow: hidden;
+border-radius: 28px;
+box-shadow: 0 18px 38px rgba(0,0,0,.22);
+border: 5px solid white;
+}
+
+.slides {
+display: flex;
+width: 300%;
+animation: deslizar 12s infinite;
+}
+
+/* Este movimiento es como el río Atrato jeje  avanza con calma 
+pero con fuerza y   no se detiene de ninguna manara. */
+@keyframes deslizar {
+0%, 28% { transform: translateX(0); }
+33%, 61% { transform: translateX(-33.333%); }
+66%, 94% { transform: translateX(-66.666%); }
+100% { transform: translateX(0); }
+}
+
+.slides img {
+width: 33.333%;
+height: 390px;
+object-fit: cover;
+}
+
+/* TARJETAS Y CONTENIDOS */
+
+.tarjetas,
+.grid-productos,
+.galeria {
+display: grid;
+gap: 20px;
+}
+
+.tarjetas {
+grid-template-columns: repeat(3, 1fr);
+margin-top: 28px;
+}
+
+.tarjetas article,
+.grid-productos article,
+.contacto,
+.bloque-doble {
+background: white;
+border-radius: 22px;
+padding: 24px;
+box-shadow: 0 10px 26px rgba(15,61,46,.10);
+}
+
+.tarjetas h3,
+.grid-productos h3 {
+color: #0f3d2e;
+}
+
+.grid-productos {
+grid-template-columns: repeat(4, 1fr);
+}
+
+.intro {
+max-width: 760px;
+}
+
+.bloque-doble {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 24px;
+align-items: center;
+}
+
+.bloque-doble img,
+.galeria img {
+width: 100%;
+border-radius: 18px;
+object-fit: cover;
+}
+
+.bloque-doble img {
+height: 330px;
+}
+
+.galeria {
+grid-template-columns: repeat(4, 1fr);
+}
+
+.galeria img {
+height: 230px;
+transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.galeria img:hover {
+transform: scale(1.03);
+box-shadow: 0 12px 28px rgba(0,0,0,.20);
+}
+
+/*  PIE DE PÁGINA */
+
+footer {
+background: #0f3d2e;
+color: #f6f3ea;
+text-align: center;
+padding: 22px;
+border-top: 4px solid #d6a319;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+.hero,
+.bloque-doble {
+    grid-template-columns: 1fr;
+}
+
+.tarjetas,
+.grid-productos,
+.galeria {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.slides img {
+    height: 320px;
+}
+}
+
+@media (max-width: 600px) {
+.encabezado {
+    padding: 26px 6%;
+}
+
+.marca {
+    align-items: flex-start;
+}
+
+.logo {
+    width: 58px;
+    height: 58px;
+    font-size: .85rem;
+}
+
+.contenedor-menu {
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+}
+
+.menu-superior label {
+    white-space: nowrap;
+    padding: 10px 14px;
+}
+
+main {
+    padding: 24px 5%;
+}
+
+.tarjetas,
+.grid-productos,
+.galeria {
+    grid-template-columns: 1fr;
+}
+
+.slides img,
+.bloque-doble img,
+.galeria img {
+    height: 250px;
+}
+}
